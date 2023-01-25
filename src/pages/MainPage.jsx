@@ -1,6 +1,7 @@
 import React from 'react';
 
 import NewsCard from '../components/news-card/NewsCard';
+import './MainPage.css';
 
 const newsData = [
   {
