@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-
+import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -29,5 +28,9 @@ function NewsCard({ header, description }) {
     </Card>
   );
 }
+NewsCard.propTypes = {
+  header: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
 
 export default NewsCard;
