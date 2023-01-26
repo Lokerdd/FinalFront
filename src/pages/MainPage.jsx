@@ -1,41 +1,24 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import NewsCard from '../components/news-card/NewsCard';
 import './MainPage.css';
 
-const newsData = [
-  {
-    id: 1,
-    name: 'Что-то снова произошло',
-    description: 'И правда, как всегда something went wrong. Например вывод этой новости на главную страницу.',
-  },
-  {
-    id: 2,
-    name: 'Что-то снова произошло',
-    description: 'И правда, как всегда something went wrong. Например вывод этой новости на главную страницу.',
-  },
-  {
-    id: 3,
-    name: 'Что-то снова произошло',
-    description: 'И правда, как всегда something went wrong. Например вывод этой новости на главную страницу.',
-  },
-];
-
 function MainPage() {
   return (
-    <div className="app">
-      <header className="header">
+    <div className="app__content content">
+      <header className="content__header header">
         <h1 className="header__site-name">News</h1>
       </header>
-      <main className="main">
+      <main className="content__main main">
         <ul className="main__news">
-          {newsData.map((item) => (
+          { useSelector((state) => state.news.data).map((item) => (
             <NewsCard
               key={item.id}
               header={item.name}
               description={item.description}
             />
-          ))}
+          )) }
         </ul>
       </main>
     </div>
