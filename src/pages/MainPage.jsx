@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import NewsCard from '../components/news-card/NewsCard';
+
 import './MainPage.css';
 
 function MainPage() {
@@ -15,8 +16,12 @@ function MainPage() {
           { useSelector((state) => state.news.data).map((item) => (
             <NewsCard
               key={item.id}
-              header={item.name}
+              userId={item.user_id}
+              header={item.header}
               description={item.description}
+              date={item.created_at}
+              tags={item.tags}
+              user={item.user}
             />
           )) }
         </ul>
