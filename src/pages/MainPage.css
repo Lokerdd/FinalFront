@@ -6,19 +6,6 @@
   list-style: none;
 }
 
-.app {
-  min-height: 100vh;
-}
-
-header {
-  border-bottom: 1px solid #f0f0f0;
-  margin-bottom: 50px;
-}
-
-header .site-name {
-  line-height: 70px;
-}
-
 .MuiCircularProgress-root {
   margin-left: calc(50vw - 20px);
 }
