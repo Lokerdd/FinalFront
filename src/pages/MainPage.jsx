@@ -9,6 +9,8 @@ import CustomAlert from '../components/CustomAlert/CustomAlert';
 
 import './MainPage.css';
 
+const NO_NEWS_MESSAGE = 'No news available';
+
 function MainPage() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -21,9 +23,15 @@ function MainPage() {
     return <CircularProgress color="inherit" />;
   }
 
-  return news.length
-    ? <NewsList news={news} />
-    : <CustomAlert error={error} />;
+  return (
+    <>
+      {error && <CustomAlert message={error} severity="error" />}
+      {!error && (
+        news.length > 0
+          ? <NewsList news={news} />
+          : <CustomAlert message={NO_NEWS_MESSAGE} severity="info" />)}
+    </>
+  );
 }
 
 export default MainPage;

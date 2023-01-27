@@ -6,26 +6,17 @@ import AlertTitle from '@mui/material/AlertTitle';
 
 import './CustomAlert.css';
 
-function CustomAlert({ error }) {
-  if (error) {
-    return (
-      <Alert severity="error">
-        <AlertTitle>Error</AlertTitle>
-        {error}
-      </Alert>
-    );
-  }
+function CustomAlert({ severity, message }) {
   return (
-    <Alert severity="info">
-      <AlertTitle>No news right now</AlertTitle>
+    <Alert severity={severity}>
+      <AlertTitle>Error</AlertTitle>
+      {message}
     </Alert>
   );
 }
 CustomAlert.propTypes = {
-  error: PropTypes.string,
-};
-CustomAlert.defaultProps = {
-  error: null,
+  severity: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
 };
 
 export default CustomAlert;
