@@ -6,7 +6,7 @@ import { NEWS_REQUESTED } from '../actionTypes';
 
 function* newsWorker() {
   try {
-    const news = yield call(api.get, 'post');
+    const news = yield call(api.get, 'posts');
     yield put(newsReceived(news.data));
   } catch (error) {
     yield put(receivingError(error.message));
