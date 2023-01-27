@@ -11,15 +11,13 @@ import { CardActionArea } from '@mui/material';
 import './NewsCard.css';
 
 function NewsCard({
-  userId,
   header,
   description,
   tags,
   user,
-  date,
 }) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -35,11 +33,10 @@ function NewsCard({
             { description }
           </Typography>
           <div className="tags">
-            {tags.map((item) => <Chip label={item.name} variant="outlined" />)}
+            {tags.map((item) => <Chip key={item.name} label={item.name} variant="outlined" />)}
           </div>
           <div className="post-data">
-            <a href={`/user/${userId}`} className="post-data__author">{user.name}</a>
-            <p className="post-data__date">{date}</p>
+            <p className="author">{`Автор: ${user.name}`}</p>
           </div>
         </CardContent>
       </CardActionArea>
@@ -47,20 +44,17 @@ function NewsCard({
   );
 }
 NewsCard.propTypes = {
-  userId: PropTypes.number.isRequired,
   header: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
-  date: PropTypes.string,
-  user: PropTypes.objectOf(
-    PropTypes.number,
-    PropTypes.string,
-    PropTypes.string,
-  ),
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    email: PropTypes.string,
+  }),
 };
 NewsCard.defaultProps = {
   tags: [],
-  date: '',
   user: {},
 };
 

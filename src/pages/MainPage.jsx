@@ -1,33 +1,45 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import NewsCard from '../components/news-card/NewsCard';
+import { getNews } from '../redux/actions/news';
+import NewsList from '../components/NewsList/NewsList';
+import Header from '../components/Header/Header';
+import CustomAlert from '../components/CustomAlert/CustomAlert';
 
 import './MainPage.css';
 
-function MainPage() {
+function view(data) {
   return (
-    <div className="app__content content">
-      <header className="content__header header">
-        <h1 className="header__site-name">News</h1>
-      </header>
-      <main className="content__main main">
-        <ul className="main__news">
-          { useSelector((state) => state.news.data).map((item) => (
-            <NewsCard
-              key={item.id}
-              userId={item.user_id}
-              header={item.header}
-              description={item.description}
-              date={item.created_at}
-              tags={item.tags}
-              user={item.user}
-            />
-          )) }
-        </ul>
+    <div className="content">
+      <Header />
+      <main className="main">
+        {data}
       </main>
     </div>
   );
+}
+
+function MainPage() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getNews());
+  }, [dispatch]);
+
+  const { news, isLoading, error } = useSelector((state) => state.news);
+
+  if (isLoading) {
+    return view('loading...');
+  }
+
+  return news.length
+    ? view(<NewsList news={news} />)
+    : view(<CustomAlert error={error} />);
+
+  // if (error) {
+  //   return view(`Error: ${error.message}`);
+  // }
+
+  // return view(<NewsList news={news} />);
 }
 
 export default MainPage;

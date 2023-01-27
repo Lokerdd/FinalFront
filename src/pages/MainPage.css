@@ -3,33 +3,18 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
+  list-style: none;
 }
 
 .app {
   min-height: 100vh;
 }
 
-.header {
+header {
   border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 50px;
 }
 
-.header__site-name {
+header .site-name {
   line-height: 70px;
-}
-
-.main__news {
-  margin: 0 auto;
-  width: 80%;
-  padding: 50px 0;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(200px, 30%));
-  place-content: center;
-  gap: 40px;
-}
-
-@media (max-width: 700px) {
-  .main__news {
-    grid-template-columns: repeat(2, minmax(150px, 45%));
-    gap: 20px;
-  }
 }

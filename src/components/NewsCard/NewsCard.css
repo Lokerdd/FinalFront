@@ -1,10 +1,10 @@
-.main__news > div {
+.news-list > div {
   min-width: 200px;
   flex-grow: 2;
   flex-shrink: 3;
 }
 
-.main__news p {
+.news-list p {
   -webkit-line-clamp: 6;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -28,21 +28,30 @@
   text-align: start;
 }
 
+.post-data .author {
+  color: grey;
+}
+
 @media (max-width: 700px) {
-  .main__news > div {
+  .news-list > div {
     width: 100%;
     min-width: 150px;
   }
 
-  .main__news button div div {
+  .news-list button div div {
     font-size: 18px;
   }
 
-  .main__news button div p {
+  .news-list button div p {
     font-size: 12px;
   }
 
   .tags span{
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .post-data .author {
     font-size: 12px;
     line-height: 15px;
   }
