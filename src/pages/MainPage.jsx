@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { getNews } from '../redux/actions/news';
 import NewsList from '../components/NewsList/NewsList';
@@ -28,7 +29,7 @@ function MainPage() {
   const { news, isLoading, error } = useSelector((state) => state.news);
 
   if (isLoading) {
-    return view('loading...');
+    return view(<CircularProgress color="inherit" />);
   }
 
   return news.length
