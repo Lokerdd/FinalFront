@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import NewsCard from '../NewsCard/NewsCard';
@@ -24,4 +24,4 @@ NewsList.propTypes = {
   news: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
-export default NewsList;
+export default memo(NewsList);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import Alert from '@mui/material/Alert';
@@ -19,4 +19,4 @@ CustomAlert.propTypes = {
   message: PropTypes.string.isRequired,
 };
 
-export default CustomAlert;
+export default memo(CustomAlert);

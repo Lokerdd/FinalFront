@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import Card from '@mui/material/Card';
@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
-import { CardActionArea } from '@mui/material';
+import CardActionArea from '@mui/material/CardActionArea';
 
 import './NewsCard.css';
 
@@ -43,6 +43,7 @@ function NewsCard({
     </Card>
   );
 }
+
 NewsCard.propTypes = {
   header: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
@@ -58,4 +59,4 @@ NewsCard.defaultProps = {
   user: {},
 };
 
-export default NewsCard;
+export default memo(NewsCard);
