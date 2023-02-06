@@ -26,17 +26,21 @@ function NewsCard({
           alt="green iguana"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            { header }
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            { description }
-          </Typography>
-          <div className="tags">
-            {tags.map((item) => <Chip key={item.name} label={item.name} variant="outlined" />)}
+          <div>
+            <Typography gutterBottom variant="h5" component="div">
+              { header }
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              { description }
+            </Typography>
           </div>
-          <div className="post-data">
-            <p className="author">{`Автор: ${user.name}`}</p>
+          <div>
+            <div className="tags">
+              {tags.map((item) => <Chip key={item.name} label={item.name} variant="outlined" />)}
+            </div>
+            <div className="post-data">
+              <p className="author">{`Автор: ${user.name}`}</p>
+            </div>
           </div>
         </CardContent>
       </CardActionArea>
