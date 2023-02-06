@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  padding: 0 10%;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 50px;
+  color: #1976d2;
+}
+
+header .site-name {
+  line-height: 70px;
+}
+
+.header .account {
+  display: flex;
+  column-gap: 10px;
+}
