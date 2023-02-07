@@ -1,0 +1,32 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  text-transform: none;
+}
+
+.auth-form input {
+  font-size: 15px;
+  line-height: 30px;
+  padding-left: 5px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.auth-form button {
+  margin-top: 10px;
+  font-size: 20px;
+  line-height: 50px;
+  color: #1976d2;
+  border: 1px solid #1976d2;
+  border-radius: 10px;
+}
+
+.auth-form button:hover {
+  background-color: rgba(120, 120, 120, 0.1);
+}
+
+.auth-form button:active {
+  background-color: rgba(120, 120, 120, 0.2);
+}
