@@ -3,3 +3,11 @@ export const NEWS_RECEIVED = 'NEWS_RECEIVED';
 export const NEWS_FAILED = 'NEWS_FAILED';
 
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
+
+export const SIGN_UP_REQUESTED = 'SIGN_UP_REQUESTED';
+export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
+export const SIGN_UP_FAILED = 'SIGN_UP_FAILED';
+
+export const LOGIN_REQUESTED = 'LOGIN_REQUESTED';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
