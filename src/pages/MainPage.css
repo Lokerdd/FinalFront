@@ -6,6 +6,6 @@
   list-style: none;
 }
 
-.MuiCircularProgress-root {
+.news-list .MuiCircularProgress-root {
   margin-left: calc(50vw - 20px);
 }

@@ -1,12 +1,26 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form, Field } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+
+import LoadingButton from '@mui/lab/LoadingButton';
 
 import { schema, fieldTypes } from './constants';
+import { authRequest } from '../../redux/actions/auth';
+import CustomAlert from '../CustomAlert/CustomAlert';
 
 import './AuthForm.css';
 
 function AuthForm({ formType }) {
+  const dispatch = useDispatch();
+  const { isLoading, error } = useSelector((state) => state.auth);
+  let errorMessages = [];
+  if (error) {
+    fieldTypes.forEach(({ name }) => {
+      if (error[name]) errorMessages = errorMessages.concat(error[name]);
+    });
+  }
+
   return (
     <Formik
       initialValues={{
@@ -16,7 +30,7 @@ function AuthForm({ formType }) {
       }}
       validationSchema={schema(formType)}
       onSubmit={(values) => {
-        console.log(values);
+        dispatch(authRequest(values));
       }}
     >
       {({ errors, touched }) => (
@@ -40,7 +54,16 @@ function AuthForm({ formType }) {
             : null
           ))}
 
-          <button type="submit">{formType}</button>
+          {error && errorMessages.map((item) => <CustomAlert key={item} message={item} severity="error" />)}
+
+          <LoadingButton
+            type="submit"
+            loading={isLoading}
+            disabled={isLoading}
+            variant="outlined"
+          >
+            {formType}
+          </LoadingButton>
         </Form>
       )}
     </Formik>

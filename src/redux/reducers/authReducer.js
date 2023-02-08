@@ -6,21 +6,21 @@ const initialState = {
   error: null,
 };
 
-const logInReducer = (state = initialState, action = null) => {
+const authReducer = (state = initialState, action = null) => {
   switch (action.type) {
-    case actionTypes.LOGIN_REQUESTED:
+    case actionTypes.AUTH_REQUESTED:
       return {
         user: [],
         isLoading: true,
         error: null,
       };
-    case actionTypes.LOGIN_SUCCESS:
+    case actionTypes.AUTH_SUCCESS:
       return {
         user: action.payload,
         isLoading: false,
         error: null,
       };
-    case actionTypes.LOGIN_FAILED:
+    case actionTypes.AUTH_FAILED:
       return {
         user: [],
         isLoading: false,
@@ -31,4 +31,4 @@ const logInReducer = (state = initialState, action = null) => {
   }
 };
 
-export default logInReducer;
+export default authReducer;

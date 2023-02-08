@@ -5,7 +5,7 @@
   text-transform: none;
 }
 
-.auth-form div {
+.auth-form div:not(.MuiAlert-root) {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
@@ -23,19 +23,14 @@
   color: red;
 }
 
+.auth-form .MuiAlert-root {
+  margin: 0;
+  width: 100%;
+  background-color: rgba(255, 100, 100, 0.5);
+}
+
 .auth-form button {
   margin-top: 10px;
   font-size: 20px;
-  line-height: 50px;
-  color: #1976d2;
-  border: 1px solid #1976d2;
   border-radius: 10px;
-}
-
-.auth-form button:hover {
-  background-color: rgba(120, 120, 120, 0.1);
-}
-
-.auth-form button:active {
-  background-color: rgba(120, 120, 120, 0.2);
 }
