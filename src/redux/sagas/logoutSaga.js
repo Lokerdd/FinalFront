@@ -8,7 +8,8 @@ import { LOGOUT_REQUESTED } from '../actionTypes';
 function* logoutWorker() {
   try {
     yield call(api.post, 'auth/logout');
-    yield put(authSucceed({}));
+    localStorage.removeItem('token');
+    yield put(authSucceed([]));
     yield put(toggleModal({ isOpen: false }));
   } catch (error) {
     yield put(authFailed(error.message));
