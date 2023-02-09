@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import LoadingButton from '@mui/lab/LoadingButton';
 
-// import { authRequest } from '../../redux/actions/auth';
+import { logoutRequest } from '../../redux/actions/auth';
 import CustomAlert from '../CustomAlert/CustomAlert';
 import toggleModal from '../../redux/actions/modal';
 
@@ -17,6 +17,10 @@ function LogoutForm() {
     dispatch(toggleModal({ isOpen: false }));
   };
 
+  const yesBtnPressed = () => {
+    dispatch(logoutRequest());
+  };
+
   return (
     <div className="logout-form">
       <span>Are you sure you want to logout?</span>
@@ -26,6 +30,7 @@ function LogoutForm() {
           loading={isLoading}
           disabled={isLoading}
           variant="outlined"
+          onClick={yesBtnPressed}
         >
           Yes
         </LoadingButton>

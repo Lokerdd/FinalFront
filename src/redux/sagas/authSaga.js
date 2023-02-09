@@ -18,8 +18,8 @@ function* authWorker({ body }) {
     const response = yield call(api.post, path, body);
     if (response) {
       localStorage.setItem('token', response.data.token);
-      yield put(toggleModal({ isOpen: false }));
       yield put(authSucceed(response.data.user));
+      yield put(toggleModal({ isOpen: false }));
     }
   } catch (error) {
     try {

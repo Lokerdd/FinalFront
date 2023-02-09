@@ -32,18 +32,6 @@ const authReducer = (state = initialState, action = null) => {
         isLoading: true,
         error: null,
       };
-    case actionTypes.VERIFY_SUCCESS:
-      return {
-        authUser: action.payload,
-        isLoading: false,
-        error: null,
-      };
-    case actionTypes.VERIFY_FAILED:
-      return {
-        authUser: [],
-        isLoading: false,
-        error: action.error,
-      };
     default:
       return state;
   }

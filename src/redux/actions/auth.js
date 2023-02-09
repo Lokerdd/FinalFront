@@ -9,6 +9,10 @@ export const verifyRequest = () => ({
   type: actionTypes.VERIFY_REQUESTED,
 });
 
+export const logoutRequest = () => ({
+  type: actionTypes.LOGOUT_REQUESTED,
+});
+
 export const authSucceed = (payload) => ({
   type: actionTypes.AUTH_SUCCESS,
   payload,
