@@ -16,15 +16,4 @@ header .site-name {
   display: flex;
   align-items: center;
   column-gap: 10px;
-  position: relative;
-}
-
-.header .account .MuiIconButton-root {
-  display: none;
-}
-
-.header .account:hover .MuiIconButton-root {
-  display: block;
-  position: absolute;
-  right: 0;
 }
