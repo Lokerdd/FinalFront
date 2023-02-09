@@ -1,16 +1,23 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import { red } from '@mui/material/colors';
 
+import { verifyRequest } from '../../redux/actions/auth';
 import toggleModal from '../../redux/actions/modal';
 
 import './Header.css';
 
 function Header() {
   const dispatch = useDispatch();
-  const username = useSelector((state) => state.auth.user.name);
+  useEffect(() => {
+    if (localStorage.getItem('token')) dispatch(verifyRequest());
+  }, [dispatch]);
+  const username = useSelector((state) => state.auth.authUser.name);
 
   const onButtonClick = (type) => {
     dispatch(toggleModal({
@@ -27,6 +34,12 @@ function Header() {
           <div className="account">
             <span>{`Hello, ${username}!`}</span>
             <Avatar>{username[0].toUpperCase()}</Avatar>
+            <IconButton
+              sx={{ color: red[500] }}
+              onClick={() => onButtonClick('Logout')}
+            >
+              <CloseIcon />
+            </IconButton>
           </div>
         )
         : (

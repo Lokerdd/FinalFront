@@ -5,6 +5,10 @@ export const authRequest = (body) => ({
   body,
 });
 
+export const verifyRequest = () => ({
+  type: actionTypes.VERIFY_REQUESTED,
+});
+
 export const authSucceed = (payload) => ({
   type: actionTypes.AUTH_SUCCESS,
   payload,

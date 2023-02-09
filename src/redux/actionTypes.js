@@ -7,3 +7,7 @@ export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 export const AUTH_REQUESTED = 'AUTH_REQUESTED';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAILED = 'AUTH_FAILED';
+
+export const VERIFY_REQUESTED = 'VERIFY_REQUESTED';
+export const VERIFY_SUCCESS = 'VERIFY_SUCCESS';
+export const VERIFY_FAILED = 'VERIFY_FAILED';
