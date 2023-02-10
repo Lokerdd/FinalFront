@@ -10,23 +10,18 @@ import { authSucceed, authFailed } from '../actions/auth';
 import toggleModal from '../actions/modal';
 import { AUTH_REQUESTED } from '../actionTypes';
 
-function* authWorker({ body }) {
+function* authWorker({ payload }) {
   try {
-    const path = (yield select((state) => state.modal.modalType)) === 'Sign Up'
+    const modalType = yield select((state) => state.modal.modalType);
+    const path = modalType === 'Sign Up'
       ? 'auth/register'
       : 'auth/login';
-    const response = yield call(api.post, path, body);
-    if (response) {
-      localStorage.setItem('token', response.data.token);
-      yield put(authSucceed(response.data.user));
-      yield put(toggleModal({ isOpen: false }));
-    }
+    const { data: { token, user } } = yield call(api.post, path, payload);
+    localStorage.setItem('token', token);
+    yield put(authSucceed(user));
+    yield put(toggleModal({ isOpen: false }));
   } catch (error) {
-    try {
-      yield put(authFailed(error.response.data.message));
-    } catch (e) {
-      yield put(authFailed(error));
-    }
+    yield put(authFailed(error.response.data.message));
   }
 }
 function* authWatcher() {

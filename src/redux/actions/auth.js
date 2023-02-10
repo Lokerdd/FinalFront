@@ -1,8 +1,8 @@
 import * as actionTypes from '../actionTypes';
 
-export const authRequest = (body) => ({
+export const authRequest = (payload) => ({
   type: actionTypes.AUTH_REQUESTED,
-  body,
+  payload,
 });
 
 export const verifyRequest = () => ({

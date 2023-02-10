@@ -6,12 +6,13 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { logoutRequest } from '../../redux/actions/auth';
 import CustomAlert from '../CustomAlert/CustomAlert';
 import toggleModal from '../../redux/actions/modal';
+import { YES_BUTTON_VALUE, NO_BUTTON_VALUE } from './constants';
 
 import './LogoutForm.css';
 
 function LogoutForm() {
-  const dispatch = useDispatch();
   const { isLoading, error } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const noBtnPressed = () => {
     dispatch(toggleModal({ isOpen: false }));
@@ -32,7 +33,7 @@ function LogoutForm() {
           variant="outlined"
           onClick={yesBtnPressed}
         >
-          Yes
+          {YES_BUTTON_VALUE}
         </LoadingButton>
 
         <LoadingButton
@@ -41,7 +42,7 @@ function LogoutForm() {
           variant="outlined"
           onClick={noBtnPressed}
         >
-          No
+          {NO_BUTTON_VALUE}
         </LoadingButton>
       </div>
 

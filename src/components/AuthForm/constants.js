@@ -4,13 +4,24 @@ export const EMAIL = 'email';
 export const NAME = 'name';
 export const PASSWORD = 'password';
 
-export const fieldTypes = [
+export const signUpFields = [
   {
     name: 'email',
     type: 'text',
   },
   {
     name: 'name',
+    type: 'text',
+  },
+  {
+    name: 'password',
+    type: 'password',
+  },
+];
+
+export const logInFields = [
+  {
+    name: 'email',
     type: 'text',
   },
   {

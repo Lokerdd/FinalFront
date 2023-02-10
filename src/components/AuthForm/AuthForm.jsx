@@ -1,19 +1,25 @@
 import React, { memo } from 'react';
-import PropTypes from 'prop-types';
 import { Formik, Form, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 
 import LoadingButton from '@mui/lab/LoadingButton';
 
-import { schema, fieldTypes } from './constants';
+import { schema, logInFields, signUpFields } from './constants';
 import { authRequest } from '../../redux/actions/auth';
 import CustomAlert from '../CustomAlert/CustomAlert';
+import { LOG_IN } from '../Header/constants';
 
 import './AuthForm.css';
 
-function AuthForm({ formType }) {
-  const dispatch = useDispatch();
+function AuthForm() {
   const { isLoading, error } = useSelector((state) => state.auth);
+  const { modalType } = useSelector((state) => state.modal);
+  const dispatch = useDispatch();
+
+  const fieldTypes = modalType === LOG_IN
+    ? logInFields
+    : signUpFields;
+
   let errorMessages = [];
   if (error) {
     fieldTypes.forEach(({ name }) => {
@@ -28,7 +34,7 @@ function AuthForm({ formType }) {
         name: '',
         password: '',
       }}
-      validationSchema={schema(formType)}
+      validationSchema={schema(modalType)}
       onSubmit={(values) => {
         dispatch(authRequest(values));
       }}
@@ -37,21 +43,18 @@ function AuthForm({ formType }) {
         <Form
           className="auth-form"
         >
-          {fieldTypes.map(({ name, type }) => (!(formType === 'Log In' && name === 'name')
-            ? (
-              <div key={name}>
-                <span>{`${name.charAt(0).toUpperCase() + name.slice(1)}:`}</span>
-                <Field
-                  id={name}
-                  name={name}
-                  type={type}
-                />
-                {errors[name] && touched[name] ? (
-                  <div className="error">{errors[name]}</div>
-                ) : null}
-              </div>
-            )
-            : null
+          {fieldTypes.map(({ name, type }) => (
+            <div key={name}>
+              <span>{`${name.charAt(0).toUpperCase()}${name.slice(1)}:`}</span>
+              <Field
+                id={name}
+                name={name}
+                type={type}
+              />
+              {errors[name] && touched[name] && (
+                <div className="error">{errors[name]}</div>
+              )}
+            </div>
           ))}
 
           {error && errorMessages.map((item) => <CustomAlert key={item} message={item} severity="error" />)}
@@ -62,15 +65,12 @@ function AuthForm({ formType }) {
             disabled={isLoading}
             variant="outlined"
           >
-            {formType}
+            {modalType}
           </LoadingButton>
         </Form>
       )}
     </Formik>
   );
 }
-AuthForm.propTypes = {
-  formType: PropTypes.string.isRequired,
-};
 
 export default memo(AuthForm);

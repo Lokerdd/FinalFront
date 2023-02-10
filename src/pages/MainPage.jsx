@@ -12,12 +12,12 @@ import './MainPage.css';
 const NO_NEWS_MESSAGE = 'No news available';
 
 function MainPage() {
+  const { news, isLoading, error } = useSelector((state) => state.news);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getNews());
   }, [dispatch]);
-
-  const { news, isLoading, error } = useSelector((state) => state.news);
 
   if (isLoading) {
     return <CircularProgress color="inherit" />;

@@ -1,7 +1,7 @@
 import * as actionTypes from '../actionTypes';
 
 const initialState = {
-  authUser: [],
+  authUser: {},
   isLoading: false,
   error: null,
 };
@@ -10,7 +10,7 @@ const authReducer = (state = initialState, action = null) => {
   switch (action.type) {
     case actionTypes.AUTH_REQUESTED:
       return {
-        authUser: [],
+        authUser: {},
         isLoading: true,
         error: null,
       };
@@ -22,13 +22,13 @@ const authReducer = (state = initialState, action = null) => {
       };
     case actionTypes.AUTH_FAILED:
       return {
-        authUser: [],
+        authUser: {},
         isLoading: false,
         error: action.error,
       };
     case actionTypes.VERIFY_REQUESTED:
       return {
-        authUser: [],
+        authUser: {},
         isLoading: true,
         error: null,
       };
