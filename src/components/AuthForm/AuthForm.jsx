@@ -4,10 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import LoadingButton from '@mui/lab/LoadingButton';
 
-import { schema, logInFields, signUpFields } from './constants';
+import { schema, getFields } from './constants';
 import { authRequest } from '../../redux/actions/auth';
 import CustomAlert from '../CustomAlert/CustomAlert';
-import { LOG_IN } from '../Header/constants';
 
 import './AuthForm.css';
 
@@ -16,9 +15,7 @@ function AuthForm() {
   const { modalType } = useSelector((state) => state.modal);
   const dispatch = useDispatch();
 
-  const fieldTypes = modalType === LOG_IN
-    ? logInFields
-    : signUpFields;
+  const fieldTypes = getFields(modalType);
 
   let errorMessages = [];
   if (error) {

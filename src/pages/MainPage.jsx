@@ -20,16 +20,21 @@ function MainPage() {
   }, [dispatch]);
 
   if (isLoading) {
-    return <CircularProgress color="inherit" />;
+    return (
+      <CircularProgress
+        color="inherit"
+        sx={{ marginLeft: 'calc(50vw - 20px)' }}
+      />
+    );
   }
 
   return (
     <>
-      {error && <CustomAlert message={error} severity="error" />}
+      {error && <CustomAlert message={error} severity="error" alertWidth="60%" />}
       {!error && (
         news.length > 0
           ? <NewsList news={news} />
-          : <CustomAlert message={NO_NEWS_MESSAGE} severity="info" />)}
+          : <CustomAlert message={NO_NEWS_MESSAGE} severity="info" alertWidth="60%" />)}
     </>
   );
 }

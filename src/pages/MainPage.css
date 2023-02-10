@@ -5,7 +5,3 @@
   text-decoration: none;
   list-style: none;
 }
-
-.app > .MuiCircularProgress-root {
-  margin-left: calc(50vw - 20px);
-}

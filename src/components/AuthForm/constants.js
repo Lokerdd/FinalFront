@@ -1,5 +1,7 @@
 import * as Yup from 'yup';
 
+import { LOG_IN, SIGN_UP } from '../Header/constants';
+
 export const EMAIL = 'email';
 export const NAME = 'name';
 export const PASSWORD = 'password';
@@ -22,6 +24,17 @@ export const signUpFields = [
   },
   ...logInFields,
 ];
+
+export const getFields = (modalType) => {
+  switch (modalType) {
+    case LOG_IN:
+      return logInFields;
+    case SIGN_UP:
+      return signUpFields;
+    default:
+      return [];
+  }
+};
 
 export const schema = (formType) => {
   const shape = {
