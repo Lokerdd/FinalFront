@@ -4,21 +4,6 @@ export const EMAIL = 'email';
 export const NAME = 'name';
 export const PASSWORD = 'password';
 
-export const signUpFields = [
-  {
-    name: 'email',
-    type: 'text',
-  },
-  {
-    name: 'name',
-    type: 'text',
-  },
-  {
-    name: 'password',
-    type: 'password',
-  },
-];
-
 export const logInFields = [
   {
     name: 'email',
@@ -28,6 +13,14 @@ export const logInFields = [
     name: 'password',
     type: 'password',
   },
+];
+
+export const signUpFields = [
+  {
+    name: 'name',
+    type: 'text',
+  },
+  ...logInFields,
 ];
 
 export const schema = (formType) => {
