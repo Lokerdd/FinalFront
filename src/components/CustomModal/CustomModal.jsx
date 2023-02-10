@@ -22,7 +22,6 @@ function CustomModal() {
     <Modal
       open={isOpen}
       onClose={onModalClose}
-      sx={{ position: 'relative' }}
     >
       <Box
         sx={{

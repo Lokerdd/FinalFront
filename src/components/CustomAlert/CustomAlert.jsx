@@ -11,6 +11,7 @@ function CustomAlert({ severity, message, alertWidth }) {
         width: alertWidth,
         margin: '0 auto',
         borderRadius: '10px',
+        backgroundColor: 'rgba(255, 100, 100, 0.5)',
       }}
     >
       {message}
