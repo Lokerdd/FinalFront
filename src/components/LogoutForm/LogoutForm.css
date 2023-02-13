@@ -1,0 +1,16 @@
+.logout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-transform: none;
+}
+
+.logout-form .buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.logout-form .buttons button {
+  flex-basis: 100px;
+  flex-grow: 2;
+}

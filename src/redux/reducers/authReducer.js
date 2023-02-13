@@ -1,31 +1,36 @@
 import * as actionTypes from '../actionTypes';
 
 const initialState = {
-  news: [],
+  authUser: {},
   isLoading: false,
   error: null,
 };
 
-const newsReducer = (state = initialState, action = null) => {
+const authReducer = (state = initialState, action = null) => {
   switch (action.type) {
-    case actionTypes.NEWS_REQUESTED:
+    case actionTypes.AUTH_REQUESTED:
       return {
         ...initialState,
         isLoading: true,
       };
-    case actionTypes.NEWS_RECEIVED:
+    case actionTypes.AUTH_SUCCESS:
       return {
         ...initialState,
-        news: action.payload,
+        authUser: action.payload,
       };
-    case actionTypes.NEWS_FAILED:
+    case actionTypes.AUTH_FAILED:
       return {
         ...initialState,
         error: action.error,
+      };
+    case actionTypes.VERIFY_REQUESTED:
+      return {
+        ...initialState,
+        isLoading: true,
       };
     default:
       return state;
   }
 };
 
-export default newsReducer;
+export default authReducer;

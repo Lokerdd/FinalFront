@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MainPage from './pages/MainPage';
+import MainPage from './pages/MainPage/MainPage';
 import Header from './components/Header/Header';
 import CustomModal from './components/CustomModal/CustomModal';
 

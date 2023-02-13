@@ -1,0 +1,30 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  text-transform: none;
+}
+
+.auth-form div:not(.MuiAlert-root) {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.auth-form input {
+  font-size: 15px;
+  line-height: 30px;
+  padding-left: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+.auth-form .error {
+  color: red;
+}
+
+.auth-form button {
+  margin-top: 10px;
+  font-size: 20px;
+  border-radius: 10px;
+}

@@ -36,10 +36,10 @@ function NewsCard({
           </div>
           <div>
             <div className="tags">
-              {tags.map((item) => <Chip key={item.name} label={item.name} variant="outlined" />)}
+              {tags.map(({ name }) => <Chip key={name} label={name} variant="outlined" />)}
             </div>
             <div className="post-data">
-              <p className="author">{`Автор: ${user.name}`}</p>
+              <p className="author">{`Author: ${user.name}`}</p>
             </div>
           </div>
         </CardContent>
