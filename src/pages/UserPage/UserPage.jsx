@@ -34,7 +34,7 @@ function UserPage() {
             <p className="amount">{posts.length}</p>
             <p className="description">Posts</p>
             { authUserId === Number(id) && (
-              <>
+              <div className="buttons">
                 <Button
                   className="edit-button"
                   variant="outlined"
@@ -47,7 +47,7 @@ function UserPage() {
                 >
                   {ADD_BUTTON_TEXT}
                 </Button>
-              </>
+              </div>
             )}
           </>
         )}
