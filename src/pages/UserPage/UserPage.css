@@ -1,0 +1,67 @@
+.user {
+  position: relative;
+  display: grid;
+  width: min-content;
+  column-gap: 30px;
+  grid-template-areas: 
+    "avatar name amount edit"
+    "avatar email description add"
+  ;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+}
+
+.user::after {
+  position: absolute;
+  content: "";
+  width: 80vw;
+  height: 1px;
+  border-bottom: 1px solid #f0f0f0;
+  left: 0;
+  bottom: 0;
+}
+
+.user .avatar {
+  grid-area: avatar;
+}
+
+.user .name {
+  grid-area: name;
+  align-self: center;
+}
+
+.user .email {
+  grid-area: email;
+  color: #777;
+}
+
+.user .amount {
+  grid-area: amount;
+  place-self: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 20px;
+}
+
+.user .description {
+  grid-area: description;
+  margin-left: 20px;
+  color: #777;
+}
+
+.user button {
+  text-transform: none;
+  white-space: nowrap;
+  min-width: min-content;
+  height: min-content;
+
+}
+
+.user .edit-button {
+  grid-area: edit;
+  align-self: center;
+}
+
+.user .add-button {
+  grid-area: add;
+}

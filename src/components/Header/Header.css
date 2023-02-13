@@ -10,6 +10,8 @@
 
 header .site-name {
   line-height: 70px;
+  font-size: 40px;
+  font-weight: 700;
 }
 
 .header .account {

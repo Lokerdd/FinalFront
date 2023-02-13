@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -16,15 +16,19 @@ function AuthForm() {
   const { isLoading, error } = useSelector((state) => state.auth);
   const { modalType } = useSelector((state) => state.modal);
 
-  const [errorMessages, setErrorMessages] = useState();
+  const [errorMessages, setErrorMessages] = useState([]);
 
   const fieldTypes = getFields(modalType);
 
-  if (error) {
-    fieldTypes.forEach(({ name }) => {
-      if (error[name]) setErrorMessages(errorMessages.concat(error[name]));
-    });
-  }
+  useEffect(() => {
+    if (error) {
+      let messages = [];
+      fieldTypes.forEach(({ name }) => {
+        if (error[name]) messages = messages.concat(error[name]);
+      });
+      setErrorMessages(messages);
+    }
+  }, [error]);
 
   return (
     <Formik

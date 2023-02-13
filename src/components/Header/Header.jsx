@@ -1,5 +1,6 @@
 import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
@@ -27,7 +28,7 @@ function Header() {
 
   return (
     <header className="header">
-      <h1 className="site-name">News</h1>
+      <Link to="/" className="site-name">News</Link>
       {username && (
         <div className="account">
           <span>{`Hello, ${username}!`}</span>
