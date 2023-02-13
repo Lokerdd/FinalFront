@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import LoadingButton from '@mui/lab/LoadingButton';
 
-import { schema, getFields } from './constants';
+import { getSchema, getFields } from './helpers';
 import { authRequest } from '../../redux/actions/auth';
 import CustomAlert from '../CustomAlert/CustomAlert';
 
@@ -12,6 +12,7 @@ import './AuthForm.css';
 
 function AuthForm() {
   const dispatch = useDispatch();
+
   const { isLoading, error } = useSelector((state) => state.auth);
   const { modalType } = useSelector((state) => state.modal);
 
@@ -32,7 +33,7 @@ function AuthForm() {
         name: '',
         password: '',
       }}
-      validationSchema={schema(modalType)}
+      validationSchema={getSchema(modalType)}
       onSubmit={(values) => {
         dispatch(authRequest(values));
       }}

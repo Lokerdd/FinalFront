@@ -10,27 +10,23 @@ const authReducer = (state = initialState, action = null) => {
   switch (action.type) {
     case actionTypes.AUTH_REQUESTED:
       return {
-        authUser: {},
+        ...initialState,
         isLoading: true,
-        error: null,
       };
     case actionTypes.AUTH_SUCCESS:
       return {
+        ...initialState,
         authUser: action.payload,
-        isLoading: false,
-        error: null,
       };
     case actionTypes.AUTH_FAILED:
       return {
-        authUser: {},
-        isLoading: false,
+        ...initialState,
         error: action.error,
       };
     case actionTypes.VERIFY_REQUESTED:
       return {
-        authUser: {},
+        ...initialState,
         isLoading: true,
-        error: null,
       };
     default:
       return state;

@@ -9,6 +9,7 @@ import toggleModal from '../../redux/actions/modal';
 import { LOG_IN, SIGN_UP, LOGOUT } from './constants';
 
 import './Header.css';
+import logoutButtonStyles from './styles';
 
 function Header() {
   const username = useSelector((state) => state.auth.authUser.name);
@@ -32,10 +33,7 @@ function Header() {
           <span>{`Hello, ${username}!`}</span>
           <Avatar>{username[0].toUpperCase()}</Avatar>
           <Button
-            sx={{
-              textTransform: 'none',
-              fontSize: '15px',
-            }}
+            sx={logoutButtonStyles}
             onClick={() => onButtonClick('Logout')}
           >
             {LOGOUT}

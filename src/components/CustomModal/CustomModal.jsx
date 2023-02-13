@@ -10,6 +10,8 @@ import LogoutForm from '../LogoutForm/LogoutForm';
 
 import toggleModal from '../../redux/actions/modal';
 
+import { boxStyles, modalNameStyles } from './styles';
+
 function CustomModal() {
   const { isOpen, modalType } = useSelector((state) => state.modal);
   const dispatch = useDispatch();
@@ -24,28 +26,13 @@ function CustomModal() {
       onClose={onModalClose}
     >
       <Box
-        sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '30%',
-          backgroundColor: '#eee',
-          border: '1px solid #1976d2',
-          borderRadius: '10px',
-          boxShadow: `0px 11px 15px -7px rgb(0 0 0 / 20%), 
-            0px 24px 38px 3px rgb(0 0 0 / 14%), 
-            0px 9px 46px 8px rgb(0 0 0 / 12%)`,
-          padding: '32px',
-          color: '#1976d2',
-          textTransform: 'uppercase',
-        }}
+        sx={boxStyles}
       >
         <Typography
           id="modal-modal-title"
           variant="h6"
           component="h2"
-          sx={{ marginBottom: '10px' }}
+          sx={modalNameStyles}
         >
           {modalType}
         </Typography>

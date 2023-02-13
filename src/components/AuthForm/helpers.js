@@ -2,11 +2,7 @@ import * as Yup from 'yup';
 
 import { LOG_IN, SIGN_UP } from '../Header/constants';
 
-export const EMAIL = 'email';
-export const NAME = 'name';
-export const PASSWORD = 'password';
-
-export const logInFields = [
+const logInFields = [
   {
     name: 'email',
     type: 'text',
@@ -17,7 +13,7 @@ export const logInFields = [
   },
 ];
 
-export const signUpFields = [
+const signUpFields = [
   {
     name: 'name',
     type: 'text',
@@ -36,7 +32,7 @@ export const getFields = (modalType) => {
   }
 };
 
-export const schema = (formType) => {
+export const getSchema = (formType) => {
   const shape = {
     password: Yup.string()
       .trim()

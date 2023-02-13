@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import CircularProgress from '@mui/material/CircularProgress';
 
-import { getNews } from '../redux/actions/news';
-import NewsList from '../components/NewsList/NewsList';
-import CustomAlert from '../components/CustomAlert/CustomAlert';
+import { getNews } from '../../redux/actions/news';
+import NewsList from '../../components/NewsList/NewsList';
+import CustomAlert from '../../components/CustomAlert/CustomAlert';
 
 import './MainPage.css';
+import circularProgressStyles from './styles';
 
 const NO_NEWS_MESSAGE = 'No news available';
 
@@ -23,7 +24,7 @@ function MainPage() {
     return (
       <CircularProgress
         color="inherit"
-        sx={{ marginLeft: 'calc(50vw - 20px)' }}
+        sx={circularProgressStyles}
       />
     );
   }

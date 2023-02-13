@@ -10,20 +10,17 @@ const newsReducer = (state = initialState, action = null) => {
   switch (action.type) {
     case actionTypes.NEWS_REQUESTED:
       return {
-        news: [],
+        ...initialState,
         isLoading: true,
-        error: null,
       };
     case actionTypes.NEWS_RECEIVED:
       return {
+        ...initialState,
         news: action.payload,
-        isLoading: false,
-        error: null,
       };
     case actionTypes.NEWS_FAILED:
       return {
-        news: [],
-        isLoading: false,
+        ...initialState,
         error: action.error,
       };
     default:

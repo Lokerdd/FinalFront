@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 
 import Alert from '@mui/material/Alert';
 
+import alertStyles from './styles';
+
 function CustomAlert({ severity, message, alertWidth }) {
   return (
     <Alert
       severity={severity}
       sx={{
+        ...alertStyles,
         width: alertWidth,
-        margin: '0 auto',
-        borderRadius: '10px',
-        backgroundColor: 'rgba(255, 100, 100, 0.5)',
       }}
     >
       {message}
