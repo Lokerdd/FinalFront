@@ -18,8 +18,6 @@ function AuthForm() {
 
   const fieldTypes = getFields(modalType);
 
-  console.log(error);
-
   return (
     <Formik
       initialValues={{
