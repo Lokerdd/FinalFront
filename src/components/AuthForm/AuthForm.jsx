@@ -1,11 +1,4 @@
-import
-React,
-{
-  memo,
-  useState,
-  useEffect,
-}
-  from 'react';
+import React, { memo } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -23,18 +16,9 @@ function AuthForm() {
 
   const dispatch = useDispatch();
 
-  const [errorMessages, setErrorMessages] = useState([]);
-
   const fieldTypes = getFields(modalType);
 
-  useEffect(() => {
-    if (error) {
-      setErrorMessages([]);
-      fieldTypes.forEach(({ name }) => {
-        if (error[name]) setErrorMessages(errorMessages.concat(error[name]));
-      });
-    }
-  }, [error]);
+  console.log(error);
 
   return (
     <Formik
@@ -67,7 +51,8 @@ function AuthForm() {
             </div>
           ))}
 
-          {error && errorMessages.map((item) => <CustomAlert key={item} message={item} severity="error" />)}
+          {error && fieldTypes.map(({ name }) => error[name]
+            && <CustomAlert key={name} message={error[name][0]} severity="error" alertWidth="100%" />)}
 
           <LoadingButton
             type="submit"

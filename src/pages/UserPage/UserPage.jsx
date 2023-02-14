@@ -11,7 +11,7 @@ import NO_NEWS_MESSAGE from './constants';
 import './UserPage.css';
 
 function UserPage() {
-  const { name, email, posts } = useSelector((state) => state.user.data);
+  const { name, email, posts } = useSelector((state) => state.user.user);
   const authUserId = useSelector((state) => state.auth.authUser.id);
 
   const { id } = useParams();
@@ -35,7 +35,7 @@ function UserPage() {
       )}
       {posts?.length
         ? <NewsList news={posts} />
-        : <CustomAlert message={NO_NEWS_MESSAGE} severity="info" alertWidth="60%" />}
+        : <CustomAlert message={NO_NEWS_MESSAGE} severity="info" />}
     </div>
   );
 }

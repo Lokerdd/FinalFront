@@ -31,11 +31,11 @@ function MainPage() {
 
   return (
     <div className="container">
-      {error && <CustomAlert message={error} severity="error" alertWidth="60%" />}
+      {error && <CustomAlert message={error} severity="error" />}
       {!error && (
         news.length > 0
           ? <NewsList news={news} />
-          : <CustomAlert message={NO_NEWS_MESSAGE} severity="info" alertWidth="60%" />)}
+          : <CustomAlert message={NO_NEWS_MESSAGE} severity="info" />)}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import * as actionTypes from '../actionTypes';
 
 const initialState = {
-  data: {},
+  user: {},
   isLoading: false,
   error: null,
 };
@@ -16,7 +16,7 @@ const userReducer = (state = initialState, action = null) => {
     case actionTypes.USER_RECEIVED:
       return {
         ...initialState,
-        data: action.payload,
+        user: action.payload,
       };
     case actionTypes.USER_FAILED:
       return {
