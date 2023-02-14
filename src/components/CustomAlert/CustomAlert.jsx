@@ -24,7 +24,7 @@ CustomAlert.propTypes = {
   alertWidth: PropTypes.string,
 };
 CustomAlert.defaultProps = {
-  alertWidth: '100%',
+  alertWidth: '60%',
 };
 
 export default memo(CustomAlert);

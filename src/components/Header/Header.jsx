@@ -1,5 +1,6 @@
 import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
@@ -12,7 +13,8 @@ import './Header.css';
 import logoutButtonStyles from './styles';
 
 function Header() {
-  const username = useSelector((state) => state.auth.authUser.name);
+  const { authUser: { name }, isLoggedIn } = useSelector((state) => state.auth);
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (localStorage.getItem('token')) dispatch(verifyRequest());
@@ -27,11 +29,11 @@ function Header() {
 
   return (
     <header className="header">
-      <h1 className="site-name">News</h1>
-      {username && (
+      <Link to="/" className="site-name">News</Link>
+      {isLoggedIn && (
         <div className="account">
-          <span>{`Hello, ${username}!`}</span>
-          <Avatar>{username[0].toUpperCase()}</Avatar>
+          <span>{`Hello, ${name}!`}</span>
+          <Avatar>{name[0].toUpperCase()}</Avatar>
           <Button
             sx={logoutButtonStyles}
             onClick={() => onButtonClick('Logout')}
@@ -40,7 +42,7 @@ function Header() {
           </Button>
         </div>
       )}
-      {!username && (
+      {!isLoggedIn && (
         <div className="account">
           <Button
             variant="outlined"

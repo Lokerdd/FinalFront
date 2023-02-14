@@ -9,7 +9,7 @@ function* logoutWorker() {
   try {
     yield call(api.post, 'auth/logout');
     localStorage.removeItem('token');
-    yield put(authSucceed({}));
+    yield put(authSucceed({ user: {}, isLoggedIN: false }));
     yield put(toggleModal({ isOpen: false }));
   } catch (error) {
     yield put(authFailed(error.message));

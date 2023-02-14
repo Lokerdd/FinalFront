@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import CircularProgress from '@mui/material/CircularProgress';
@@ -30,14 +30,14 @@ function MainPage() {
   }
 
   return (
-    <>
-      {error && <CustomAlert message={error} severity="error" alertWidth="60%" />}
+    <div className="container">
+      {error && <CustomAlert message={error} severity="error" />}
       {!error && (
         news.length > 0
           ? <NewsList news={news} />
-          : <CustomAlert message={NO_NEWS_MESSAGE} severity="info" alertWidth="60%" />)}
-    </>
+          : <CustomAlert message={NO_NEWS_MESSAGE} severity="info" />)}
+    </div>
   );
 }
 
-export default MainPage;
+export default memo(MainPage);

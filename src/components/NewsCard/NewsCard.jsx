@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -22,8 +23,8 @@ function NewsCard({
         <CardMedia
           component="img"
           height="140"
-          image="./assets/images/no-news-image.png"
-          alt="green iguana"
+          image="../assets/images/no-news-image.png"
+          alt="Article image"
         />
         <CardContent>
           <div>
@@ -39,7 +40,14 @@ function NewsCard({
               {tags.map(({ name }) => <Chip key={name} label={name} variant="outlined" />)}
             </div>
             <div className="post-data">
-              <p className="author">{`Author: ${user.name}`}</p>
+              {
+                user?.id && (
+                  <p>
+                    Author:&nbsp;
+                    <Link to={`/users/${user.id}`}>{user.name}</Link>
+                  </p>
+                )
+              }
             </div>
           </div>
         </CardContent>

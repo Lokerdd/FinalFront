@@ -1,18 +1,20 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
+import Layout from './components/Layout/Layout';
 import MainPage from './pages/MainPage/MainPage';
-import Header from './components/Header/Header';
-import CustomModal from './components/CustomModal/CustomModal';
+import UserPage from './pages/UserPage/UserPage';
 
 import './App.css';
 
 function App() {
   return (
-    <div className="app">
-      <CustomModal />
-      <Header />
-      <MainPage />
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<MainPage />} />
+        <Route path="users/:id" element={<UserPage />} />
+      </Route>
+    </Routes>
   );
 }
 

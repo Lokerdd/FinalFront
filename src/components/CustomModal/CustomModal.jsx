@@ -14,8 +14,8 @@ import { boxStyles, modalNameStyles } from './styles';
 
 function CustomModal() {
   const { isOpen, modalType } = useSelector((state) => state.modal);
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   const onModalClose = () => {
     dispatch(toggleModal({ isOpen: false }));
   };

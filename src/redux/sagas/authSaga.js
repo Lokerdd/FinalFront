@@ -18,7 +18,7 @@ function* authWorker({ payload }) {
       : 'auth/login';
     const { data: { token, user } } = yield call(api.post, path, payload);
     localStorage.setItem('token', token);
-    yield put(authSucceed(user));
+    yield put(authSucceed({ isLoggedIn: true, user }));
     yield put(toggleModal({ isOpen: false }));
   } catch (error) {
     yield put(authFailed(error.response.data.message));
