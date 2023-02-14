@@ -4,6 +4,7 @@ const initialState = {
   authUser: {},
   isLoading: false,
   error: null,
+  isLoggedIn: false,
 };
 
 const authReducer = (state = initialState, action = null) => {
@@ -16,7 +17,8 @@ const authReducer = (state = initialState, action = null) => {
     case actionTypes.AUTH_SUCCESS:
       return {
         ...initialState,
-        authUser: action.payload,
+        authUser: action.payload.user,
+        isLoggedIn: action.payload.isLoggedIn,
       };
     case actionTypes.AUTH_FAILED:
       return {

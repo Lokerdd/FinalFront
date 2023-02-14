@@ -7,7 +7,7 @@ import { VERIFY_REQUESTED } from '../actionTypes';
 function* verifyWorker() {
   try {
     const { data: { user } } = yield call(api.get, 'auth/whoiam');
-    yield put(authSucceed(user));
+    yield put(authSucceed({ isLoggedIn: true, user }));
   } catch (error) {
     yield put(authFailed(error.message));
   }

@@ -41,10 +41,10 @@ function NewsCard({
             </div>
             <div className="post-data">
               {
-                user.id && (
+                user?.id && (
                   <p>
                     Author:&nbsp;
-                    <Link to={`/user/${user.id}`}>{user.name}</Link>
+                    <Link to={`/users/${user.id}`}>{user.name}</Link>
                   </p>
                 )
               }

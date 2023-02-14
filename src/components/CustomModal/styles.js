@@ -4,7 +4,7 @@ export const boxStyles = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '30%',
-  backgroundColor: '#eee',
+  backgroundColor: '#fff',
   border: '1px solid #1976d2',
   borderRadius: '10px',
   boxShadow: `0px 11px 15px -7px rgb(0 0 0 / 20%), 

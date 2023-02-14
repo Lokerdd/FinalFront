@@ -1,4 +1,11 @@
-import React, { memo, useState, useEffect } from 'react';
+import
+React,
+{
+  memo,
+  useState,
+  useEffect,
+}
+  from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,10 +18,10 @@ import CustomAlert from '../CustomAlert/CustomAlert';
 import './AuthForm.css';
 
 function AuthForm() {
-  const dispatch = useDispatch();
-
   const { isLoading, error } = useSelector((state) => state.auth);
   const { modalType } = useSelector((state) => state.modal);
+
+  const dispatch = useDispatch();
 
   const [errorMessages, setErrorMessages] = useState([]);
 
@@ -22,11 +29,10 @@ function AuthForm() {
 
   useEffect(() => {
     if (error) {
-      let messages = [];
+      setErrorMessages([]);
       fieldTypes.forEach(({ name }) => {
-        if (error[name]) messages = messages.concat(error[name]);
+        if (error[name]) setErrorMessages(errorMessages.concat(error[name]));
       });
-      setErrorMessages(messages);
     }
   }, [error]);
 
@@ -53,6 +59,7 @@ function AuthForm() {
                 id={name}
                 name={name}
                 type={type}
+                className="auth-input"
               />
               {errors[name] && touched[name] && (
                 <div className="error">{errors[name]}</div>

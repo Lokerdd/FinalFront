@@ -14,6 +14,7 @@ import logoutButtonStyles from './styles';
 
 function Header() {
   const username = useSelector((state) => state.auth.authUser.name);
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (localStorage.getItem('token')) dispatch(verifyRequest());
