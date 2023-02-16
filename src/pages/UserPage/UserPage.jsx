@@ -11,7 +11,8 @@ import NO_NEWS_MESSAGE from './constants';
 import './UserPage.css';
 
 function UserPage() {
-  const { name, email, posts } = useSelector((state) => state.user.user);
+  const { name, email } = useSelector((state) => state.user.user);
+  const posts = useSelector((state) => state.user.userPost);
   const authUserId = useSelector((state) => state.auth.authUser.id);
 
   const { id } = useParams();
@@ -25,7 +26,7 @@ function UserPage() {
 
   return (
     <div className="container user-page">
-      { name && (
+      {name && (
         <UserCard
           name={name}
           email={email}

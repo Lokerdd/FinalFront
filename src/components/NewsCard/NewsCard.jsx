@@ -16,6 +16,7 @@ function NewsCard({
   description,
   tags,
   user,
+  image,
 }) {
   return (
     <Card>
@@ -23,7 +24,7 @@ function NewsCard({
         <CardMedia
           component="img"
           height="140"
-          image="../assets/images/no-news-image.png"
+          image={image || '../assets/images/no-news-image.png'}
           alt="Article image"
         />
         <CardContent>
@@ -65,10 +66,12 @@ NewsCard.propTypes = {
     name: PropTypes.string,
     email: PropTypes.string,
   }),
+  image: PropTypes.string,
 };
 NewsCard.defaultProps = {
   tags: [],
   user: {},
+  image: undefined,
 };
 
 export default memo(NewsCard);

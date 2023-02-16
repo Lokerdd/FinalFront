@@ -13,7 +13,7 @@ import './Header.css';
 import logoutButtonStyles from './styles';
 
 function Header() {
-  const { authUser: { name }, isLoggedIn } = useSelector((state) => state.auth);
+  const { authUser: { name, id }, isLoggedIn } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -33,7 +33,9 @@ function Header() {
       {isLoggedIn && (
         <div className="account">
           <span>{`Hello, ${name}!`}</span>
-          <Avatar>{name[0].toUpperCase()}</Avatar>
+          <Link to={`users/${id}`}>
+            <Avatar>{name[0].toUpperCase()}</Avatar>
+          </Link>
           <Button
             sx={logoutButtonStyles}
             onClick={() => onButtonClick('Logout')}

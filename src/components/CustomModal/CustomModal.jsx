@@ -5,10 +5,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
-import AuthForm from '../AuthForm/AuthForm';
-import LogoutForm from '../LogoutForm/LogoutForm';
-
 import toggleModal from '../../redux/actions/modal';
+import getForms from './helpers';
 
 import { boxStyles, modalNameStyles } from './styles';
 
@@ -36,9 +34,7 @@ function CustomModal() {
         >
           {modalType}
         </Typography>
-        {modalType === 'Logout'
-          ? <LogoutForm />
-          : <AuthForm formType={modalType} />}
+        {getForms(modalType)}
       </Box>
     </Modal>
   );
