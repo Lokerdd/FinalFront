@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
 import toggleModal from '../../redux/actions/modal';
-import getForms from './helpers';
+import getForms from '../../helpers/getForms';
 
 import { boxStyles, modalNameStyles } from './styles';
 

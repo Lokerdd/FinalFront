@@ -1,7 +1,7 @@
 import React from 'react';
-import AuthForm from '../AuthForm/AuthForm';
-import LogoutForm from '../LogoutForm/LogoutForm';
-import AddPostForm from '../AddPostForm/AddPostForm';
+import AuthForm from '../components/AuthForm/AuthForm';
+import LogoutForm from '../components/LogoutForm/LogoutForm';
+import AddPostForm from '../components/AddPostForm/AddPostForm';
 
 const getForms = (modalType) => {
   switch (modalType) {
