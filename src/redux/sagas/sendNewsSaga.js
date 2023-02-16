@@ -11,7 +11,16 @@ import { SENDING_NEWS_REQUESTED } from '../actionTypes';
 
 function* sendNewsWorker({ payload }) {
   try {
-    const { data } = yield call(api.post, 'posts', payload);
+    const toSend = new FormData();
+    toSend.append('header', payload.header);
+    toSend.append('description', payload.description);
+    if (payload.tags) {
+      toSend.append('tags', payload.tags);
+    }
+    if (payload.image) {
+      toSend.append('image', payload.image);
+    }
+    const { data } = yield call(api.post, 'posts', toSend);
 
     yield put(newsSent(data));
     yield put(toggleModal({ isOpen: false }));
@@ -19,6 +28,7 @@ function* sendNewsWorker({ payload }) {
     yield put(sendingFailed(error.message));
   }
 }
+
 function* sendNewsWatcher() {
   yield takeLatest(SENDING_NEWS_REQUESTED, sendNewsWorker);
 }

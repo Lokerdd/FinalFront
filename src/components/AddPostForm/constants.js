@@ -1,13 +1,3 @@
-export const ADD_POST = 'Add post';
+const ADD_POST = 'Add Post';
 
-export const fields = [
-  {
-    name: 'header',
-  },
-  {
-    name: 'description',
-  },
-  {
-    name: 'tags',
-  },
-];
+export default ADD_POST;

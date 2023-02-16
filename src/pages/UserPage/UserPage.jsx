@@ -12,7 +12,7 @@ import './UserPage.css';
 
 function UserPage() {
   const { name, email } = useSelector((state) => state.user.user);
-  const posts = useSelector((state) => state.user.userPost);
+  const posts = useSelector((state) => state.user.userPosts);
   const authUserId = useSelector((state) => state.auth.authUser.id);
 
   const { id } = useParams();

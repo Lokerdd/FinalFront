@@ -8,8 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import LoadingButton from '@mui/lab/LoadingButton';
 
-import getSchema from './helpers';
-import { fields, ADD_POST } from './constants';
+import getSchema from '../../helpers/getSchema';
+import getFields from '../../helpers/getFields';
+import ADD_POST from './constants';
 import CustomAlert from '../CustomAlert/CustomAlert';
 import { sendNews } from '../../redux/actions/user';
 
@@ -20,6 +21,8 @@ function AddPostForm() {
 
   const dispatch = useDispatch();
 
+  const fields = getFields(ADD_POST);
+
   return (
     <Formik
       initialValues={{
@@ -27,25 +30,14 @@ function AddPostForm() {
         description: '',
         tags: '',
       }}
-      validationSchema={getSchema()}
+      validationSchema={getSchema(ADD_POST)}
       onSubmit={(values) => {
-        const toSend = new FormData();
-        toSend.append('header', values.header);
-        toSend.append('description', values.description);
-        if (values.tags) {
-          toSend.append('tags', values.tags);
-        }
-        if (values.image) {
-          toSend.append('image', values.image);
-        }
-        dispatch(sendNews(toSend));
+        dispatch(sendNews(values));
       }}
     >
       {({ errors, touched, setFieldValue }) => (
-        <Form
-          className="add-post-form"
-        >
-          {fields.map(({ name }) => (
+        <Form className="add-post-form">
+          {fields.map((name) => (
             <div key={name}>
               <span>{`${name.charAt(0).toUpperCase()}${name.slice(1)}:`}</span>
               <Field

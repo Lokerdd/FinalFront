@@ -2,7 +2,7 @@ import * as actionTypes from '../actionTypes';
 
 const initialState = {
   user: {},
-  userPost: [],
+  userPosts: [],
   isLoading: false,
   error: null,
 };
@@ -18,7 +18,7 @@ const userReducer = (state = initialState, action = null) => {
       return {
         ...initialState,
         user: action.payload,
-        userPost: action.payload.posts,
+        userPosts: action.payload.posts,
       };
     case actionTypes.USER_FAILED:
       return {
@@ -30,20 +30,20 @@ const userReducer = (state = initialState, action = null) => {
         ...initialState,
         isLoading: true,
         user: state.user,
-        userPost: state.userPost,
+        userPosts: state.userPosts,
       };
     case actionTypes.SENDING_NEWS_SUCCESS:
       return {
         ...initialState,
         user: state.user,
-        userPost: [action.payload, ...state.userPost],
+        userPosts: [action.payload, ...state.userPosts],
       };
     case actionTypes.SENDING_NEWS_FAILED:
       return {
         ...initialState,
         error: action.error,
         user: state.user,
-        userPost: state.userPost,
+        userPosts: state.userPosts,
       };
     default:
       return state;
