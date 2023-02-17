@@ -17,7 +17,7 @@ function* editProfileWorker({ payload }) {
       toSend.append('name', payload.name);
     }
     if (payload.image) {
-      toSend.append('image', payload.image);
+      toSend.append('avatar', payload.image);
     }
     const { data } = yield call(api.post, 'users', toSend);
 

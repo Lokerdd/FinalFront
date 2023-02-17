@@ -17,7 +17,13 @@ import { ADD_POST, EDIT_PROFILE } from './constants';
 import './UserPageForm.css';
 
 function UserPageForm() {
-  const { user: { name: username }, isLoading, error } = useSelector((state) => state.user);
+  const {
+    user: {
+      name: username,
+    },
+    isLoading,
+    error,
+  } = useSelector((state) => state.user);
   const { modalType } = useSelector((state) => state.modal);
 
   const dispatch = useDispatch();
