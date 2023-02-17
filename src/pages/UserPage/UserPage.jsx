@@ -14,7 +14,7 @@ import circularProgressStyles from './styles';
 import './UserPage.css';
 
 function UserPage() {
-  const { name, email } = useSelector((state) => state.user.user);
+  const { name, email, avatar } = useSelector((state) => state.user.user);
   const posts = useSelector((state) => state.user.userPosts);
   const isLoading = useSelector((state) => state.user.isLoading);
   const authUserId = useSelector((state) => state.auth.authUser.id);
@@ -45,6 +45,7 @@ function UserPage() {
           email={email}
           postsAmount={posts.length}
           isNowUserCard={isNowUser}
+          avatar={avatar}
         />
       )}
       {posts?.length

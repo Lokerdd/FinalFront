@@ -15,6 +15,7 @@ function UserCard({
   email,
   postsAmount,
   isNowUserCard,
+  avatar,
 }) {
   const dispatch = useDispatch();
 
@@ -29,9 +30,12 @@ function UserCard({
     <div className="user">
       {name && (
         <>
-          <Avatar className="avatar" sx={avatarStyles}>
-            {name[0].toUpperCase()}
-          </Avatar>
+          <Avatar
+            className="avatar"
+            sx={avatarStyles}
+            src={avatar}
+            alt={name[0].toUpperCase()}
+          />
           <h2 className="name">{name}</h2>
           <p className="email">{email}</p>
           <p className="amount">{postsAmount}</p>
@@ -64,6 +68,10 @@ UserCard.propTypes = {
   email: PropTypes.string.isRequired,
   postsAmount: PropTypes.number.isRequired,
   isNowUserCard: PropTypes.bool.isRequired,
+  avatar: PropTypes.string,
+};
+UserCard.defaultProps = {
+  avatar: '',
 };
 
 export default memo(UserCard);

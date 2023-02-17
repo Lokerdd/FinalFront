@@ -45,6 +45,26 @@ const userReducer = (state = initialState, action = null) => {
         user: state.user,
         userPosts: state.userPosts,
       };
+    case actionTypes.EDIT_PROFILE_REQUESTED:
+      return {
+        ...initialState,
+        isLoading: true,
+        user: state.user,
+        userPosts: state.userPosts,
+      };
+    case actionTypes.EDIT_PROFILE_SUCCEED:
+      return {
+        ...initialState,
+        user: action.payload,
+        userPosts: state.userPosts,
+      };
+    case actionTypes.EDIT_PROFILE_FAILED:
+      return {
+        ...initialState,
+        error: action.error,
+        user: state.user,
+        userPosts: state.userPosts,
+      };
     default:
       return state;
   }

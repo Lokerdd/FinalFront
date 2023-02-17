@@ -29,3 +29,18 @@ export const sendingFailed = (error) => ({
   type: actionTypes.SENDING_NEWS_FAILED,
   error,
 });
+
+export const editProfile = (payload) => ({
+  type: actionTypes.EDIT_PROFILE_REQUESTED,
+  payload,
+});
+
+export const editSucceed = (payload) => ({
+  type: actionTypes.EDIT_PROFILE_SUCCEED,
+  payload,
+});
+
+export const editFailed = (error) => ({
+  type: actionTypes.EDIT_PROFILE_FAILED,
+  error,
+});
