@@ -41,6 +41,7 @@ function UserCard({
               <Button
                 className="edit-button"
                 variant="outlined"
+                onClick={() => onButtonClick('Edit Profile')}
               >
                 {EDIT_BUTTON_TEXT}
               </Button>

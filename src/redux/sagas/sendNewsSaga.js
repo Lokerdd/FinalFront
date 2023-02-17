@@ -14,7 +14,7 @@ function* sendNewsWorker({ payload }) {
     const toSend = new FormData();
     toSend.append('header', payload.header);
     toSend.append('description', payload.description);
-    if (payload.tags) {
+    if (payload.tags.trim()) {
       toSend.append('tags', payload.tags);
     }
     if (payload.image) {

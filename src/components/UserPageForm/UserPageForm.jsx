@@ -10,18 +10,18 @@ import LoadingButton from '@mui/lab/LoadingButton';
 
 import getSchema from '../../helpers/getSchema';
 import getFields from '../../helpers/getFields';
-import ADD_POST from './constants';
 import CustomAlert from '../CustomAlert/CustomAlert';
 import { sendNews } from '../../redux/actions/user';
 
-import './AddPostForm.css';
+import './UserPageForm.css';
 
-function AddPostForm() {
+function UserPageForm() {
   const { isLoading, error } = useSelector((state) => state.user);
+  const { modalType } = useSelector((state) => state.modal);
 
   const dispatch = useDispatch();
 
-  const fields = getFields(ADD_POST);
+  const fields = getFields(modalType);
 
   return (
     <Formik
@@ -30,7 +30,7 @@ function AddPostForm() {
         description: '',
         tags: '',
       }}
-      validationSchema={getSchema(ADD_POST)}
+      validationSchema={getSchema(modalType)}
       onSubmit={(values) => {
         dispatch(sendNews(values));
       }}
@@ -52,22 +52,26 @@ function AddPostForm() {
             </div>
           ))}
 
-          <input
-            id="image"
-            name="image"
-            type="file"
-            onChange={(event) => {
-              setFieldValue('image', event.currentTarget.files[0]);
-            }}
-          />
+          <div>
+            <span>Image:</span>
+            <input
+              id="image"
+              name="image"
+              type="file"
+              className="add-post-input"
+              onChange={(event) => {
+                setFieldValue('image', event.currentTarget.files[0]);
+              }}
+            />
+          </div>
 
           {error
             && (
-            <CustomAlert
-              message={error}
-              severity="error"
-              alertWidth="100%"
-            />
+              <CustomAlert
+                message={error}
+                severity="error"
+                alertWidth="100%"
+              />
             )}
 
           <LoadingButton
@@ -76,7 +80,7 @@ function AddPostForm() {
             disabled={isLoading}
             variant="outlined"
           >
-            {ADD_POST}
+            {modalType}
           </LoadingButton>
         </Form>
       )}
@@ -84,4 +88,4 @@ function AddPostForm() {
   );
 }
 
-export default memo(AddPostForm);
+export default memo(UserPageForm);

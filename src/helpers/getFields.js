@@ -1,5 +1,5 @@
 import { LOG_IN, SIGN_UP } from '../components/Header/constants';
-import ADD_POST from '../components/AddPostForm/constants';
+import { ADD_POST, EDIT_PROFILE } from '../components/UserPageForm/constants';
 
 const logInFields = [
   {
@@ -26,6 +26,10 @@ const addPostFields = [
   'tags',
 ];
 
+const editProfileFields = [
+  'name',
+];
+
 const getFields = (modalType) => {
   switch (modalType) {
     case LOG_IN:
@@ -34,6 +38,8 @@ const getFields = (modalType) => {
       return signUpFields;
     case ADD_POST:
       return addPostFields;
+    case EDIT_PROFILE:
+      return editProfileFields;
     default:
       return [];
   }
