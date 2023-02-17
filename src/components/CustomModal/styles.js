@@ -4,6 +4,7 @@ export const boxStyles = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '30%',
+  minWidth: 'min-content',
   backgroundColor: '#fff',
   border: '1px solid #1976d2',
   borderRadius: '10px',

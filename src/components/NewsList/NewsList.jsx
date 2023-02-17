@@ -15,6 +15,7 @@ function NewsList({ news }) {
           description={item.description}
           tags={item.tags}
           user={item.user}
+          image={item.image}
         />
       )) }
     </div>

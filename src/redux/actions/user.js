@@ -14,3 +14,18 @@ export const receivingError = (error) => ({
   type: actionTypes.USER_FAILED,
   error,
 });
+
+export const sendNews = (payload) => ({
+  type: actionTypes.SENDING_NEWS_REQUESTED,
+  payload,
+});
+
+export const newsSent = (payload) => ({
+  type: actionTypes.SENDING_NEWS_SUCCESS,
+  payload,
+});
+
+export const sendingFailed = (error) => ({
+  type: actionTypes.SENDING_NEWS_FAILED,
+  error,
+});

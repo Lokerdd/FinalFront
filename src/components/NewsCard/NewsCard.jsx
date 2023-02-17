@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
 import CardActionArea from '@mui/material/CardActionArea';
 
+import IMAGE_PATH from './constants';
+
 import './NewsCard.css';
 
 function NewsCard({
@@ -16,6 +18,7 @@ function NewsCard({
   description,
   tags,
   user,
+  image,
 }) {
   return (
     <Card>
@@ -23,7 +26,7 @@ function NewsCard({
         <CardMedia
           component="img"
           height="140"
-          image="../assets/images/no-news-image.png"
+          image={image || IMAGE_PATH}
           alt="Article image"
         />
         <CardContent>
@@ -65,10 +68,12 @@ NewsCard.propTypes = {
     name: PropTypes.string,
     email: PropTypes.string,
   }),
+  image: PropTypes.string,
 };
 NewsCard.defaultProps = {
   tags: [],
   user: {},
+  image: '',
 };
 
 export default memo(NewsCard);

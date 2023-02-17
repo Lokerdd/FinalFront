@@ -1,9 +1,11 @@
 import React, { memo } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { Avatar, Button } from '@mui/material';
 
 import { EDIT_BUTTON_TEXT, ADD_BUTTON_TEXT } from './constants';
+import toggleModal from '../../redux/actions/modal';
 
 import avatarStyles from './styles';
 import './UserCard.css';
@@ -14,6 +16,15 @@ function UserCard({
   postsAmount,
   isNowUserCard,
 }) {
+  const dispatch = useDispatch();
+
+  const onButtonClick = (type) => {
+    dispatch(toggleModal({
+      isOpen: true,
+      type,
+    }));
+  };
+
   return (
     <div className="user">
       {name && (
@@ -36,6 +47,7 @@ function UserCard({
               <Button
                 className="add-button"
                 variant="outlined"
+                onClick={() => onButtonClick('Add Post')}
               >
                 {ADD_BUTTON_TEXT}
               </Button>
