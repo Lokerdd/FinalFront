@@ -5,9 +5,9 @@ import { useParams } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import { userRequest } from '../../redux/actions/user';
-import NewsList from '../../components/NewsList/NewsList';
-import UserCard from '../../components/UserCard/UserCard';
-import CustomAlert from '../../components/CustomAlert/CustomAlert';
+import NewsList from '../../components/NewsList';
+import UserCard from '../../components/UserCard';
+import CustomAlert from '../../components/CustomAlert';
 import NO_NEWS_MESSAGE from './constants';
 
 import circularProgressStyles from './styles';

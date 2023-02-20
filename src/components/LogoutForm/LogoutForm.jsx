@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import LoadingButton from '@mui/lab/LoadingButton';
 
 import { logoutRequest } from '../../redux/actions/auth';
-import CustomAlert from '../CustomAlert/CustomAlert';
+import CustomAlert from '../CustomAlert';
 import toggleModal from '../../redux/actions/modal';
 import { YES_BUTTON_VALUE, NO_BUTTON_VALUE } from './constants';
 
