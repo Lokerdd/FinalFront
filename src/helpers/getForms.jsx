@@ -7,7 +7,8 @@ const getForms = (modalType) => {
   switch (modalType) {
     case 'Logout':
       return <LogoutForm />;
-    case 'Add Post': case 'Edit Profile':
+    case 'Add Post':
+    case 'Edit Profile':
       return <UserPageForm formType={modalType} />;
     default:
       return <AuthForm formType={modalType} />;
