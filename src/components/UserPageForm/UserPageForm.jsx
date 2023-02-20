@@ -50,9 +50,7 @@ function UserPageForm() {
             values.name !== username
             || values.image
           )
-        ) {
-          dispatch(editProfile(values));
-        }
+        ) dispatch(editProfile(values));
       }}
     >
       {({ errors, touched, setFieldValue }) => (
