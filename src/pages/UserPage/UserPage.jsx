@@ -35,7 +35,7 @@ function UserPage() {
     );
   }
 
-  const isNowUser = authUserId === Number(id);
+  const isCurrentUser = authUserId === Number(id);
 
   return (
     <div className="container user-page">
@@ -44,7 +44,7 @@ function UserPage() {
           name={name}
           email={email}
           postsAmount={posts.length}
-          isNowUserCard={isNowUser}
+          isNowUserCard={isCurrentUser}
           avatar={avatar}
         />
       )}
