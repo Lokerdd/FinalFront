@@ -1,9 +1,12 @@
 import * as Yup from 'yup';
 
+import { EDIT_PROFILE, ADD_POST } from '../components/UserPageForm/constants';
+import { SIGN_UP, LOG_IN } from '../components/Header/constants';
+
 const getSchema = (formType) => {
   let shape;
   switch (formType) {
-    case 'Add Post':
+    case ADD_POST:
       shape = {
         header: Yup.string()
           .trim()
@@ -15,8 +18,17 @@ const getSchema = (formType) => {
       };
       return Yup.object().shape(shape);
 
-    case 'Sign Up':
-    case 'Log In':
+    case EDIT_PROFILE:
+      shape = {
+        name: Yup.string()
+          .trim()
+          .min(4, 'At least 4 characters without spaces!')
+          .required("You can't change your name om empty string"),
+      };
+      return Yup.object().shape(shape);
+
+    case SIGN_UP:
+    case LOG_IN:
       shape = {
         password: Yup.string()
           .trim()
@@ -30,7 +42,7 @@ const getSchema = (formType) => {
           .required('Required'),
       };
 
-      if (formType === 'Log In') {
+      if (formType === LOG_IN) {
         return Yup.object().shape(shape);
       }
 

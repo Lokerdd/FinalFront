@@ -30,6 +30,12 @@ const authReducer = (state = initialState, action = null) => {
         ...initialState,
         isLoading: true,
       };
+    case actionTypes.EDIT_PROFILE_SUCCEED:
+      return {
+        ...initialState,
+        authUser: action.payload,
+        isLoggedIn: state.isLoggedIn,
+      };
     default:
       return state;
   }

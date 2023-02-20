@@ -27,10 +27,9 @@ const userReducer = (state = initialState, action = null) => {
       };
     case actionTypes.SENDING_NEWS_REQUESTED:
       return {
-        ...initialState,
+        ...state,
         isLoading: true,
-        user: state.user,
-        userPosts: state.userPosts,
+        error: null,
       };
     case actionTypes.SENDING_NEWS_SUCCESS:
       return {
@@ -40,10 +39,27 @@ const userReducer = (state = initialState, action = null) => {
       };
     case actionTypes.SENDING_NEWS_FAILED:
       return {
-        ...initialState,
+        ...state,
         error: action.error,
-        user: state.user,
+        isLoading: false,
+      };
+    case actionTypes.EDIT_PROFILE_REQUESTED:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case actionTypes.EDIT_PROFILE_SUCCEED:
+      return {
+        ...initialState,
+        user: action.payload,
         userPosts: state.userPosts,
+      };
+    case actionTypes.EDIT_PROFILE_FAILED:
+      return {
+        ...state,
+        error: action.error,
+        isLoading: false,
       };
     default:
       return state;

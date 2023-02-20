@@ -11,16 +11,11 @@ import { SENDING_NEWS_REQUESTED } from '../actionTypes';
 
 function* sendNewsWorker({ payload }) {
   try {
-    const toSend = new FormData();
-    toSend.append('header', payload.header);
-    toSend.append('description', payload.description);
-    if (payload.tags) {
-      toSend.append('tags', payload.tags);
-    }
-    if (payload.image) {
-      toSend.append('image', payload.image);
-    }
-    const { data } = yield call(api.post, 'posts', toSend);
+    const dataToSend = new FormData();
+    Object.keys(payload).forEach((key) => {
+      dataToSend.append(key, payload[key]);
+    });
+    const { data } = yield call(api.post, 'posts', dataToSend);
 
     yield put(newsSent(data));
     yield put(toggleModal({ isOpen: false }));

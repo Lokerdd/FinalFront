@@ -10,18 +10,28 @@ import LoadingButton from '@mui/lab/LoadingButton';
 
 import getSchema from '../../helpers/getSchema';
 import getFields from '../../helpers/getFields';
-import ADD_POST from './constants';
 import CustomAlert from '../CustomAlert/CustomAlert';
-import { sendNews } from '../../redux/actions/user';
+import { sendNews, editProfile } from '../../redux/actions/user';
+import { ADD_POST, EDIT_PROFILE } from './constants';
 
-import './AddPostForm.css';
+import './UserPageForm.css';
 
-function AddPostForm() {
-  const { isLoading, error } = useSelector((state) => state.user);
+function UserPageForm() {
+  const {
+    user: {
+      name: username,
+    },
+    isLoading,
+    error,
+  } = useSelector((state) => state.user);
+  const { modalType } = useSelector((state) => state.modal);
 
   const dispatch = useDispatch();
 
-  const fields = getFields(ADD_POST);
+  const fields = getFields(modalType);
+
+  const isAddPost = modalType === ADD_POST;
+  const isEditProfile = modalType === EDIT_PROFILE;
 
   return (
     <Formik
@@ -29,10 +39,18 @@ function AddPostForm() {
         header: '',
         description: '',
         tags: '',
+        name: username,
       }}
-      validationSchema={getSchema(ADD_POST)}
+      validationSchema={getSchema(modalType)}
       onSubmit={(values) => {
-        dispatch(sendNews(values));
+        if (isAddPost) dispatch(sendNews(values));
+        if (
+          isEditProfile
+          && (
+            values.name !== username
+            || values.image
+          )
+        ) dispatch(editProfile(values));
       }}
     >
       {({ errors, touched, setFieldValue }) => (
@@ -52,22 +70,26 @@ function AddPostForm() {
             </div>
           ))}
 
-          <input
-            id="image"
-            name="image"
-            type="file"
-            onChange={(event) => {
-              setFieldValue('image', event.currentTarget.files[0]);
-            }}
-          />
+          <div>
+            <span>Image:</span>
+            <input
+              id="image"
+              name="image"
+              type="file"
+              className="add-post-input"
+              onChange={(event) => {
+                setFieldValue('image', event.currentTarget.files[0]);
+              }}
+            />
+          </div>
 
           {error
             && (
-            <CustomAlert
-              message={error}
-              severity="error"
-              alertWidth="100%"
-            />
+              <CustomAlert
+                message={error}
+                severity="error"
+                alertWidth="100%"
+              />
             )}
 
           <LoadingButton
@@ -76,7 +98,7 @@ function AddPostForm() {
             disabled={isLoading}
             variant="outlined"
           >
-            {ADD_POST}
+            {modalType}
           </LoadingButton>
         </Form>
       )}
@@ -84,4 +106,4 @@ function AddPostForm() {
   );
 }
 
-export default memo(AddPostForm);
+export default memo(UserPageForm);
