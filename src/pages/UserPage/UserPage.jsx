@@ -23,7 +23,7 @@ function UserPage() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(userRequest(id));
+    if (id) dispatch(userRequest(id));
   }, [id]);
 
   if (isLoading) {

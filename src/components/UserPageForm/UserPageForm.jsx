@@ -30,6 +30,9 @@ function UserPageForm() {
 
   const fields = getFields(modalType);
 
+  const isAddPost = modalType === ADD_POST;
+  const isEditProfile = modalType === EDIT_PROFILE;
+
   return (
     <Formik
       initialValues={{
@@ -40,10 +43,13 @@ function UserPageForm() {
       }}
       validationSchema={getSchema(modalType)}
       onSubmit={(values) => {
-        if (modalType === ADD_POST) dispatch(sendNews(values));
+        if (isAddPost) dispatch(sendNews(values));
         if (
-          modalType === EDIT_PROFILE
-          && (values.name !== username || values.image)
+          isEditProfile
+          && (
+            values.name !== username
+            || values.image
+          )
         ) {
           dispatch(editProfile(values));
         }

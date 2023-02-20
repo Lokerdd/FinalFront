@@ -11,15 +11,12 @@ import { EDIT_PROFILE_REQUESTED } from '../actionTypes';
 
 function* editProfileWorker({ payload }) {
   try {
-    const toSend = new FormData();
-    toSend.append('_method', 'PUT');
-    if (payload.name.trim()) {
-      toSend.append('name', payload.name);
-    }
-    if (payload.image) {
-      toSend.append('avatar', payload.image);
-    }
-    const { data } = yield call(api.post, 'users', toSend);
+    const dataToSend = new FormData();
+    dataToSend.append('_method', 'PUT');
+    Object.keys(payload).forEach((key) => {
+      dataToSend.append(key, payload[key]);
+    });
+    const { data } = yield call(api.post, 'users', dataToSend);
 
     yield put(editSucceed(data));
     yield put(toggleModal({ isOpen: false }));
