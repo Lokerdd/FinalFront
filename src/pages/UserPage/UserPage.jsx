@@ -5,9 +5,9 @@ import { useParams } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import { userRequest } from '../../redux/actions/user';
-import NewsList from '../../components/NewsList/NewsList';
-import UserCard from '../../components/UserCard/UserCard';
-import CustomAlert from '../../components/CustomAlert/CustomAlert';
+import NewsList from '../../components/NewsList';
+import UserCard from '../../components/UserCard';
+import CustomAlert from '../../components/CustomAlert';
 import NO_NEWS_MESSAGE from './constants';
 
 import circularProgressStyles from './styles';
@@ -35,7 +35,7 @@ function UserPage() {
     );
   }
 
-  const isNowUser = authUserId === Number(id);
+  const isCurrentUser = authUserId === Number(id);
 
   return (
     <div className="container user-page">
@@ -44,7 +44,7 @@ function UserPage() {
           name={name}
           email={email}
           postsAmount={posts.length}
-          isNowUserCard={isNowUser}
+          isNowUserCard={isCurrentUser}
           avatar={avatar}
         />
       )}

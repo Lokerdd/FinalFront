@@ -7,7 +7,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import getFields from '../../helpers/getFields';
 import getSchema from '../../helpers/getSchema';
 import { authRequest } from '../../redux/actions/auth';
-import CustomAlert from '../CustomAlert/CustomAlert';
+import CustomAlert from '../CustomAlert';
 
 import './AuthForm.css';
 

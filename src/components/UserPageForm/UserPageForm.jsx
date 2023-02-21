@@ -10,7 +10,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 
 import getSchema from '../../helpers/getSchema';
 import getFields from '../../helpers/getFields';
-import CustomAlert from '../CustomAlert/CustomAlert';
+import CustomAlert from '../CustomAlert';
 import { sendNews, editProfile } from '../../redux/actions/user';
 import { ADD_POST, EDIT_PROFILE } from './constants';
 

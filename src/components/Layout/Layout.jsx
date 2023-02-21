@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import Header from '../Header/Header';
-import CustomModal from '../CustomModal/CustomModal';
+import Header from '../Header';
+import CustomModal from '../CustomModal';
 
 function Layout() {
   return (

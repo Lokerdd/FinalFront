@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
-import NewsCard from '../NewsCard/NewsCard';
+import NewsCard from '../NewsCard';
 
 import './NewsList.css';
 

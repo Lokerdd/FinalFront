@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import { getNews } from '../../redux/actions/news';
-import NewsList from '../../components/NewsList/NewsList';
-import CustomAlert from '../../components/CustomAlert/CustomAlert';
+import NewsList from '../../components/NewsList';
+import CustomAlert from '../../components/CustomAlert';
 
 import './MainPage.css';
 import circularProgressStyles from './styles';
