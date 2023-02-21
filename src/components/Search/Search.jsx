@@ -1,14 +1,25 @@
 import React, { memo } from 'react';
+import { useDispatch } from 'react-redux';
 
 import TextField from '@mui/material/TextField';
 
-import searchStyles from './styles';
+import { findNews } from '../../redux/actions/news';
 
 function Search() {
+  const dispatch = useDispatch();
+
+  const onInputChange = (event) => {
+    dispatch(findNews(event.target.value));
+  };
+
   return (
     <TextField
+      id="search"
+      height="10px"
       placeholder="Search..."
-      sx={searchStyles}
+      size="small"
+      onChange={onInputChange}
+      sx={{ mr: 1 }}
     />
   );
 }

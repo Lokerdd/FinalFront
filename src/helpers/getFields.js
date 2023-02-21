@@ -1,5 +1,6 @@
 import { LOG_IN, SIGN_UP } from '../components/Header/constants';
 import { ADD_POST, EDIT_PROFILE } from '../components/UserPageForm/constants';
+import FILTERS from '../components/Filter/constants';
 
 const logInFields = [
   {
@@ -30,8 +31,14 @@ const editProfileFields = [
   'name',
 ];
 
-const getFields = (modalType) => {
-  switch (modalType) {
+const filterFields = [
+  'All',
+  'Tags',
+  'Author',
+];
+
+const getFields = (menuType) => {
+  switch (menuType) {
     case LOG_IN:
       return logInFields;
     case SIGN_UP:
@@ -40,6 +47,8 @@ const getFields = (modalType) => {
       return addPostFields;
     case EDIT_PROFILE:
       return editProfileFields;
+    case FILTERS:
+      return filterFields;
     default:
       return [];
   }
