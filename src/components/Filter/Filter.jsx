@@ -1,5 +1,5 @@
-import React, { memo, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { memo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
 import Select from '@mui/material/Select';
@@ -10,13 +10,12 @@ import FILTERS from './constants';
 import { changeFilter } from '../../redux/actions/news';
 
 function Search() {
+  const filter = useSelector((state) => state.news.currentFilter);
+
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const [filter, setFilter] = useState('All');
-
   const onInputChange = (event) => {
-    setFilter(event.target.value);
     dispatch(changeFilter(event.target.value));
   };
 
