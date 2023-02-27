@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import TextField from '@mui/material/TextField';
 
-import { changeSearchText, switchPage } from '../../redux/actions/news';
+import { changeSearchText } from '../../redux/actions/news';
 
 function Search() {
   const searchText = useSelector((state) => state.news.searchText);
@@ -12,7 +12,6 @@ function Search() {
 
   const onSearchTextChange = (event) => {
     dispatch(changeSearchText(event.target.value));
-    dispatch(switchPage(1));
   };
 
   return (

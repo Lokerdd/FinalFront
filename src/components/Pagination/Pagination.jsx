@@ -1,6 +1,7 @@
 import * as React from 'react';
-import Pagination from '@mui/material/Pagination';
 import { useDispatch, useSelector } from 'react-redux';
+
+import Pagination from '@mui/material/Pagination';
 
 import { switchPage } from '../../redux/actions/news';
 

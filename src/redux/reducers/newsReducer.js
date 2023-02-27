@@ -38,11 +38,13 @@ const newsReducer = (state = initialState, action = null) => {
       return {
         ...state,
         searchText: action.payload,
+        page: 1,
       };
     case actionTypes.CHANGE_FILTER:
       return {
         ...state,
         currentFilter: action.payload,
+        page: 1,
       };
     case actionTypes.SWITCH_PAGE:
       return {
