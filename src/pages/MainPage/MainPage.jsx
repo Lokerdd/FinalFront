@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import CircularProgress from '@mui/material/CircularProgress';
 
-import { getNews } from '../../redux/actions/news';
+import { changeSearchText, changeFilter, getNews } from '../../redux/actions/news';
 import NewsList from '../../components/NewsList';
 import CustomAlert from '../../components/CustomAlert';
 
@@ -19,12 +19,19 @@ function MainPage() {
     error,
     searchText,
     currentFilter,
+    page,
   } = useSelector((state) => state.news);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(changeFilter('All'));
+    dispatch(changeSearchText(''));
+  }, [dispatch]);
+
   useEffect(() => {
     dispatch(getNews());
-  }, [dispatch, searchText, currentFilter]);
+  }, [searchText, currentFilter, page]);
 
   if (isLoading) {
     return (

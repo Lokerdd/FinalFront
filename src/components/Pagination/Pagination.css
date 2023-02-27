@@ -1,0 +1,9 @@
+.pagination {
+  width: min-content;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+.pagination ul {
+  flex-wrap: nowrap;
+}

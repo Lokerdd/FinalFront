@@ -23,3 +23,8 @@ export const changeFilter = (payload) => ({
   type: actionTypes.CHANGE_FILTER,
   payload,
 });
+
+export const switchPage = (payload) => ({
+  type: actionTypes.SWITCH_PAGE,
+  payload,
+});

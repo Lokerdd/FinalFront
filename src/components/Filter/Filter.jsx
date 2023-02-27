@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 import getFields from '../../helpers/getFields';
 import FILTERS from './constants';
-import { changeFilter } from '../../redux/actions/news';
+import { changeFilter, switchPage } from '../../redux/actions/news';
 
 function Search() {
   const filter = useSelector((state) => state.news.currentFilter);
@@ -15,6 +15,7 @@ function Search() {
 
   const onFilterChange = (event) => {
     dispatch(changeFilter(event.target.value));
+    dispatch(switchPage(1));
   };
 
   const fields = getFields(FILTERS);

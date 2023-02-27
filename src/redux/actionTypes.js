@@ -27,3 +27,5 @@ export const EDIT_PROFILE_FAILED = 'EDIT_PROFILE_FAILED';
 export const SEARCH_NEWS = 'SEARCH_NEWS';
 
 export const CHANGE_FILTER = 'CHANGE_FILTER';
+
+export const SWITCH_PAGE = 'SWITCH_PAGE';

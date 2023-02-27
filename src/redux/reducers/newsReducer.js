@@ -6,28 +6,33 @@ const initialState = {
   error: null,
   searchText: '',
   currentFilter: 'All',
+  page: 1,
+  amountOfPages: 0,
 };
 
 const newsReducer = (state = initialState, action = null) => {
   switch (action.type) {
     case actionTypes.NEWS_REQUESTED:
       return {
-        ...initialState,
+        ...state,
         isLoading: true,
-        searchText: state.searchText,
-        currentFilter: state.currentFilter,
+        error: null,
+        news: [],
       };
     case actionTypes.NEWS_RECEIVED:
       return {
-        ...initialState,
-        news: action.payload,
-        searchText: state.searchText,
-        currentFilter: state.currentFilter,
+        ...state,
+        news: action.payload.posts,
+        amountOfPages: action.payload.pages,
+        isLoading: false,
+        error: null,
       };
     case actionTypes.NEWS_FAILED:
       return {
         ...initialState,
         error: action.error,
+        searchText: state.searchText,
+        currentFilter: state.currentFilter,
       };
     case actionTypes.SEARCH_NEWS:
       return {
@@ -38,6 +43,11 @@ const newsReducer = (state = initialState, action = null) => {
       return {
         ...state,
         currentFilter: action.payload,
+      };
+    case actionTypes.SWITCH_PAGE:
+      return {
+        ...state,
+        page: action.payload,
       };
     default:
       return state;
