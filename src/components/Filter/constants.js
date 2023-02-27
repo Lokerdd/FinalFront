@@ -1,3 +1,2 @@
-const FILTERS = 'FILTERS';
-
-export default FILTERS;
+export const GENERAL_FILTERS = 'GENERAL_FILTERS';
+export const USER_PAGE_FILTERS = 'USER_PAGE_FILTERS';

@@ -1,6 +1,6 @@
 import { LOG_IN, SIGN_UP } from '../components/Header/constants';
 import { ADD_POST, EDIT_PROFILE } from '../components/UserPageForm/constants';
-import FILTERS from '../components/Filter/constants';
+import { GENERAL_FILTERS, USER_PAGE_FILTERS } from '../components/Filter/constants';
 
 const logInFields = [
   {
@@ -31,10 +31,15 @@ const editProfileFields = [
   'name',
 ];
 
-const filterFields = [
+const generalFilters = [
   'All',
   'Tags',
   'Author',
+];
+
+const userPageFilters = [
+  'All',
+  'Tags',
 ];
 
 const getFields = (menuType) => {
@@ -47,8 +52,10 @@ const getFields = (menuType) => {
       return addPostFields;
     case EDIT_PROFILE:
       return editProfileFields;
-    case FILTERS:
-      return filterFields;
+    case GENERAL_FILTERS:
+      return generalFilters;
+    case USER_PAGE_FILTERS:
+      return userPageFilters;
     default:
       return [];
   }

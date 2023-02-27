@@ -39,7 +39,7 @@ function Header() {
   return (
     <header className="header">
       <Link to="/" className="site-name">News</Link>
-      <div className="search-field">
+      <div>
         <Search />
         <Filter />
       </div>

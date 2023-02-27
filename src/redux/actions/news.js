@@ -14,7 +14,7 @@ export const receivingError = (error) => ({
   error,
 });
 
-export const findNews = (payload) => ({
+export const changeSearchText = (payload) => ({
   type: actionTypes.SEARCH_NEWS,
   payload,
 });

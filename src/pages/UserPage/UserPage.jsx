@@ -10,7 +10,7 @@ import UserCard from '../../components/UserCard';
 import CustomAlert from '../../components/CustomAlert';
 import NO_NEWS_MESSAGE from './constants';
 import getFilteredNews from '../../helpers/getFilteredNews';
-import { changeFilter, findNews } from '../../redux/actions/news';
+import { changeFilter, changeSearchText } from '../../redux/actions/news';
 
 import circularProgressStyles from './styles';
 import './UserPage.css';
@@ -30,7 +30,7 @@ function UserPage() {
   }, [id]);
   useEffect(() => {
     dispatch(changeFilter('All'));
-    dispatch(findNews(''));
+    dispatch(changeSearchText(''));
   }, [dispatch]);
 
   if (isLoading) {

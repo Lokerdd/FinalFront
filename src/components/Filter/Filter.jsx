@@ -6,7 +6,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
 import getFields from '../../helpers/getFields';
-import FILTERS from './constants';
+import { GENERAL_FILTERS, USER_PAGE_FILTERS } from './constants';
 import { changeFilter } from '../../redux/actions/news';
 
 function Search() {
@@ -15,27 +15,23 @@ function Search() {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const onInputChange = (event) => {
+  const onFilterChange = (event) => {
     dispatch(changeFilter(event.target.value));
   };
+
+  const fields = location.pathname.includes('users')
+    ? getFields(USER_PAGE_FILTERS)
+    : getFields(GENERAL_FILTERS);
 
   return (
     <Select
       id="filter"
       size="small"
       value={filter}
-      onChange={onInputChange}
+      onChange={onFilterChange}
     >
       {
-        getFields(FILTERS).map((item) => {
-          if (
-            item === 'Author'
-            && location.pathname.includes('users')
-          ) {
-            return <MenuItem key={item} value={item} disabled>{item}</MenuItem>;
-          }
-          return <MenuItem key={item} value={item}>{item}</MenuItem>;
-        })
+        fields.map((item) => <MenuItem key={item} value={item}>{item}</MenuItem>)
       }
     </Select>
   );

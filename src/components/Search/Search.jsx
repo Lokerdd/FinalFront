@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import TextField from '@mui/material/TextField';
 
-import { findNews } from '../../redux/actions/news';
+import { changeSearchText } from '../../redux/actions/news';
 
 function Search() {
   const searchText = useSelector((state) => state.news.searchText);
 
   const dispatch = useDispatch();
 
-  const onInputChange = (event) => {
-    dispatch(findNews(event.target.value));
+  const onSearchTextChange = (event) => {
+    dispatch(changeSearchText(event.target.value));
   };
 
   return (
@@ -20,7 +20,7 @@ function Search() {
       height="10px"
       placeholder="Search..."
       size="small"
-      onChange={onInputChange}
+      onChange={onSearchTextChange}
       value={searchText}
       sx={{ mr: 1 }}
     />
