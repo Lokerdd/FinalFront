@@ -14,11 +14,15 @@ const newsReducer = (state = initialState, action = null) => {
       return {
         ...initialState,
         isLoading: true,
+        searchText: state.searchText,
+        currentFilter: state.currentFilter,
       };
     case actionTypes.NEWS_RECEIVED:
       return {
         ...initialState,
         news: action.payload,
+        searchText: state.searchText,
+        currentFilter: state.currentFilter,
       };
     case actionTypes.NEWS_FAILED:
       return {

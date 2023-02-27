@@ -1,6 +1,8 @@
+import { useLocation } from 'react-router-dom';
+
 import { LOG_IN, SIGN_UP } from '../components/Header/constants';
 import { ADD_POST, EDIT_PROFILE } from '../components/UserPageForm/constants';
-import { GENERAL_FILTERS, USER_PAGE_FILTERS } from '../components/Filter/constants';
+import FILTERS from '../components/Filter/constants';
 
 const logInFields = [
   {
@@ -43,6 +45,8 @@ const userPageFilters = [
 ];
 
 const getFields = (menuType) => {
+  const location = useLocation();
+
   switch (menuType) {
     case LOG_IN:
       return logInFields;
@@ -52,10 +56,10 @@ const getFields = (menuType) => {
       return addPostFields;
     case EDIT_PROFILE:
       return editProfileFields;
-    case GENERAL_FILTERS:
-      return generalFilters;
-    case USER_PAGE_FILTERS:
-      return userPageFilters;
+    case FILTERS:
+      return location.pathname.includes('users')
+        ? userPageFilters
+        : generalFilters;
     default:
       return [];
   }

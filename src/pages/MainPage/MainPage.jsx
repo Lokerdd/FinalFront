@@ -3,10 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import CircularProgress from '@mui/material/CircularProgress';
 
-import { getNews, changeFilter } from '../../redux/actions/news';
+import { getNews } from '../../redux/actions/news';
 import NewsList from '../../components/NewsList';
 import CustomAlert from '../../components/CustomAlert';
-import getFilteredNews from '../../helpers/getFilteredNews';
 
 import './MainPage.css';
 import circularProgressStyles from './styles';
@@ -25,8 +24,7 @@ function MainPage() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getNews());
-    dispatch(changeFilter('All'));
-  }, [dispatch]);
+  }, [dispatch, searchText, currentFilter]);
 
   if (isLoading) {
     return (
@@ -37,14 +35,12 @@ function MainPage() {
     );
   }
 
-  const filteredNews = getFilteredNews(searchText, currentFilter, news);
-
   return (
     <div className="container">
       {error && <CustomAlert message={error} severity="error" />}
       {!error && (
-        news.length > 0
-          ? <NewsList news={filteredNews} />
+        news.length
+          ? <NewsList news={news} />
           : <CustomAlert message={NO_NEWS_MESSAGE} severity="info" />)}
     </div>
   );
