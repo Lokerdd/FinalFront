@@ -9,6 +9,8 @@ import NewsList from '../../components/NewsList';
 import UserCard from '../../components/UserCard';
 import CustomAlert from '../../components/CustomAlert';
 import NO_NEWS_MESSAGE from './constants';
+import getFilteredNews from '../../helpers/getFilteredNews';
+import { changeFilter, changeSearchText } from '../../redux/actions/news';
 
 import circularProgressStyles from './styles';
 import './UserPage.css';
@@ -18,6 +20,7 @@ function UserPage() {
   const posts = useSelector((state) => state.user.userPosts);
   const isLoading = useSelector((state) => state.user.isLoading);
   const authUserId = useSelector((state) => state.auth.authUser.id);
+  const { searchText, currentFilter } = useSelector((state) => state.news);
 
   const { id } = useParams();
 
@@ -25,6 +28,10 @@ function UserPage() {
   useEffect(() => {
     if (id) dispatch(userRequest(id));
   }, [id]);
+  useEffect(() => {
+    dispatch(changeFilter('All'));
+    dispatch(changeSearchText(''));
+  }, [dispatch]);
 
   if (isLoading) {
     return (
@@ -36,6 +43,12 @@ function UserPage() {
   }
 
   const isCurrentUser = authUserId === Number(id);
+  const filteredNews = getFilteredNews(
+    searchText,
+    currentFilter,
+    posts,
+    name,
+  );
 
   return (
     <div className="container user-page">
@@ -49,7 +62,7 @@ function UserPage() {
         />
       )}
       {posts?.length
-        ? <NewsList news={posts} />
+        ? <NewsList news={filteredNews} />
         : <CustomAlert message={NO_NEWS_MESSAGE} severity="info" />}
     </div>
   );
