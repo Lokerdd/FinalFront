@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -20,12 +20,12 @@ function UserCard({
 }) {
   const dispatch = useDispatch();
 
-  const onButtonClick = (type) => {
+  const onButtonClick = useCallback((type) => {
     dispatch(toggleModal({
       isOpen: true,
       type,
     }));
-  };
+  }, []);
 
   return (
     <div className="user">

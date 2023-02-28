@@ -29,6 +29,7 @@ function UserPageForm() {
   const dispatch = useDispatch();
 
   const fields = getFields(modalType);
+  const schema = getSchema(modalType);
 
   const isAddPost = modalType === ADD_POST;
   const isEditProfile = modalType === EDIT_PROFILE;
@@ -41,7 +42,7 @@ function UserPageForm() {
         tags: '',
         name: username,
       }}
-      validationSchema={getSchema(modalType)}
+      validationSchema={schema}
       onSubmit={(values) => {
         if (isAddPost) dispatch(sendNews(values));
         if (

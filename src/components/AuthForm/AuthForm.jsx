@@ -18,6 +18,7 @@ function AuthForm() {
   const dispatch = useDispatch();
 
   const fieldTypes = getFields(modalType);
+  const schema = getSchema(modalType);
 
   return (
     <Formik
@@ -26,7 +27,7 @@ function AuthForm() {
         name: '',
         password: '',
       }}
-      validationSchema={getSchema(modalType)}
+      validationSchema={schema}
       onSubmit={(values) => {
         dispatch(authRequest(values));
       }}
