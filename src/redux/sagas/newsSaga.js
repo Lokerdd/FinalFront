@@ -10,8 +10,8 @@ import { newsReceived, receivingError } from '../actions/news';
 import { NEWS_REQUESTED } from '../actionTypes';
 
 function* newsWorker() {
-  const { currentFilter, searchText } = yield select((state) => state.news);
-  const path = `posts?filter=${currentFilter}&search-text=${searchText}`;
+  const { currentFilter, searchText, page } = yield select((state) => state.news);
+  const path = `posts?filter=${currentFilter}&search-text=${searchText}&page=${page}`;
 
   try {
     const { data } = yield call(api.get, path);

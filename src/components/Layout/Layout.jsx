@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 
 import Header from '../Header';
 import CustomModal from '../CustomModal';
+import Pagination from '../Pagination';
 
 function Layout() {
   return (
@@ -10,6 +11,7 @@ function Layout() {
       <CustomModal />
       <Header />
       <Outlet />
+      <Pagination />
     </>
   );
 }
