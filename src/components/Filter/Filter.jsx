@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Select from '@mui/material/Select';
@@ -13,9 +13,9 @@ function Search() {
 
   const dispatch = useDispatch();
 
-  const onFilterChange = (event) => {
-    dispatch(changeFilter(event.target.value));
-  };
+  const onFilterChange = useCallback(({ target: { value } }) => {
+    dispatch(changeFilter(value));
+  }, []);
 
   const fields = getFields(FILTERS);
 

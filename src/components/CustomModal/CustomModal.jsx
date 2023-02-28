@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Box from '@mui/material/Box';
@@ -14,9 +14,10 @@ function CustomModal() {
   const { isOpen, modalType } = useSelector((state) => state.modal);
 
   const dispatch = useDispatch();
-  const onModalClose = () => {
+
+  const onModalClose = useCallback(() => {
     dispatch(toggleModal({ isOpen: false }));
-  };
+  }, []);
 
   return (
     <Modal

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import TextField from '@mui/material/TextField';
@@ -10,9 +10,9 @@ function Search() {
 
   const dispatch = useDispatch();
 
-  const onSearchTextChange = (event) => {
-    dispatch(changeSearchText(event.target.value));
-  };
+  const onSearchTextChange = useCallback(({ target: { value } }) => {
+    dispatch(changeSearchText(value));
+  }, []);
 
   return (
     <TextField
