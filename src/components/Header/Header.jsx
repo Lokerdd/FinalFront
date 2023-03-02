@@ -25,16 +25,13 @@ function Header() {
   } = useSelector((state) => state.auth);
 
   const [searchParams] = useSearchParams();
+  const token = searchParams.get('token');
+  if (token) localStorage.setItem('token', token);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    const token = searchParams.get('token');
-
-    if (token) localStorage.setItem('token', token);
-    if (!localStorage.getItem('token')) return;
-
-    dispatch(verifyRequest());
-  }, [dispatch]);
+    if (localStorage.getItem('token')) dispatch(verifyRequest());
+  }, [dispatch, token]);
 
   const onButtonClick = useCallback((type) => {
     dispatch(toggleModal({

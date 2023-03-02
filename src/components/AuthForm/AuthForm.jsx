@@ -8,6 +8,7 @@ import getFields from '../../helpers/getFields';
 import getSchema from '../../helpers/getSchema';
 import { authRequest } from '../../redux/actions/auth';
 import CustomAlert from '../CustomAlert';
+import { GOOGLE_AUTH_URL, SIGN_IN_WITH_GOOGLE } from './constants';
 
 import './AuthForm.css';
 
@@ -21,7 +22,7 @@ function AuthForm() {
   const schema = getSchema(modalType);
 
   const handleGoogleButtonClick = () => {
-    window.location.assign('http://localhost:8000/api/auth/google');
+    window.location.assign(GOOGLE_AUTH_URL);
   };
 
   return (
@@ -72,7 +73,7 @@ function AuthForm() {
               type="button"
               onClick={handleGoogleButtonClick}
             >
-              Sign in with Google
+              {SIGN_IN_WITH_GOOGLE}
             </LoadingButton>
           </div>
         </Form>
