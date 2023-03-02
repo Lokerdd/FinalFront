@@ -55,7 +55,7 @@ function UserPage() {
           name={name}
           email={email}
           postsAmount={posts.length}
-          isNowUserCard={isCurrentUser}
+          isCurrentUserCard={isCurrentUser}
           avatar={avatar}
         />
       )}

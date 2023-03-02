@@ -9,6 +9,7 @@ function* verifyWorker() {
     const { data: { user } } = yield call(api.get, 'auth/whoiam');
     yield put(authSucceed({ isLoggedIn: true, user }));
   } catch (error) {
+    localStorage.removeItem('token');
     yield put(authFailed(error.message));
   }
 }

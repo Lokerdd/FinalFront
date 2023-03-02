@@ -8,6 +8,7 @@ import getFields from '../../helpers/getFields';
 import getSchema from '../../helpers/getSchema';
 import { authRequest } from '../../redux/actions/auth';
 import CustomAlert from '../CustomAlert';
+import { GOOGLE_AUTH_URL, SIGN_IN_WITH_GOOGLE } from './constants';
 
 import './AuthForm.css';
 
@@ -19,6 +20,10 @@ function AuthForm() {
 
   const fieldTypes = getFields(modalType);
   const schema = getSchema(modalType);
+
+  const handleGoogleButtonClick = () => {
+    window.location.assign(GOOGLE_AUTH_URL);
+  };
 
   return (
     <Formik
@@ -54,14 +59,23 @@ function AuthForm() {
           {error && fieldTypes.map(({ name }) => error[name]
             && <CustomAlert key={name} message={error[name][0]} severity="error" alertWidth="100%" />)}
 
-          <LoadingButton
-            type="submit"
-            loading={isLoading}
-            disabled={isLoading}
-            variant="outlined"
-          >
-            {modalType}
-          </LoadingButton>
+          <div className="buttons">
+            <LoadingButton
+              type="submit"
+              loading={isLoading}
+              disabled={isLoading}
+              variant="outlined"
+            >
+              {modalType}
+            </LoadingButton>
+            <LoadingButton
+              variant="contained"
+              type="button"
+              onClick={handleGoogleButtonClick}
+            >
+              {SIGN_IN_WITH_GOOGLE}
+            </LoadingButton>
+          </div>
         </Form>
       )}
     </Formik>

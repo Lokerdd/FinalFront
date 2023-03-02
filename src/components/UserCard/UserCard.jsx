@@ -14,8 +14,7 @@ import './UserCard.css';
 function UserCard({
   name,
   email,
-  postsAmount,
-  isNowUserCard,
+  isCurrentUserCard,
   avatar,
 }) {
   const dispatch = useDispatch();
@@ -39,9 +38,7 @@ function UserCard({
           />
           <h2 className="name">{name}</h2>
           <p className="email">{email}</p>
-          <p className="amount">{postsAmount}</p>
-          <p className="description">Posts</p>
-          {isNowUserCard && (
+          {isCurrentUserCard && (
             <div className="buttons">
               <Button
                 className="edit-button"
@@ -67,8 +64,7 @@ function UserCard({
 UserCard.propTypes = {
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  postsAmount: PropTypes.number.isRequired,
-  isNowUserCard: PropTypes.bool.isRequired,
+  isCurrentUserCard: PropTypes.bool.isRequired,
   avatar: PropTypes.string,
 };
 UserCard.defaultProps = {
