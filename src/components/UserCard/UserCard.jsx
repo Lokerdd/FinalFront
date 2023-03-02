@@ -14,7 +14,6 @@ import './UserCard.css';
 function UserCard({
   name,
   email,
-  postsAmount,
   isNowUserCard,
   avatar,
 }) {
@@ -39,8 +38,6 @@ function UserCard({
           />
           <h2 className="name">{name}</h2>
           <p className="email">{email}</p>
-          <p className="amount">{postsAmount}</p>
-          <p className="description">Posts</p>
           {isNowUserCard && (
             <div className="buttons">
               <Button
@@ -67,7 +64,6 @@ function UserCard({
 UserCard.propTypes = {
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  postsAmount: PropTypes.number.isRequired,
   isNowUserCard: PropTypes.bool.isRequired,
   avatar: PropTypes.string,
 };

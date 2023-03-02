@@ -23,8 +23,11 @@
   color: red;
 }
 
-.auth-form button {
+.auth-form .buttons {
   margin-top: 10px;
-  font-size: 20px;
+}
+
+.auth-form .buttons button {
+  font-size: 17px;
   border-radius: 10px;
 }

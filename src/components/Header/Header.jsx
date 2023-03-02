@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
@@ -24,9 +24,16 @@ function Header() {
     isLoggedIn,
   } = useSelector((state) => state.auth);
 
+  const [searchParams] = useSearchParams();
+
   const dispatch = useDispatch();
   useEffect(() => {
-    if (localStorage.getItem('token')) dispatch(verifyRequest());
+    const token = searchParams.get('token');
+
+    if (token) localStorage.setItem('token', token);
+    if (!localStorage.getItem('token')) return;
+
+    dispatch(verifyRequest());
   }, [dispatch]);
 
   const onButtonClick = useCallback((type) => {

@@ -20,6 +20,10 @@ function AuthForm() {
   const fieldTypes = getFields(modalType);
   const schema = getSchema(modalType);
 
+  const handleGoogleButtonClick = () => {
+    window.location.assign('http://localhost:8000/api/auth/google');
+  };
+
   return (
     <Formik
       initialValues={{
@@ -54,14 +58,23 @@ function AuthForm() {
           {error && fieldTypes.map(({ name }) => error[name]
             && <CustomAlert key={name} message={error[name][0]} severity="error" alertWidth="100%" />)}
 
-          <LoadingButton
-            type="submit"
-            loading={isLoading}
-            disabled={isLoading}
-            variant="outlined"
-          >
-            {modalType}
-          </LoadingButton>
+          <div className="buttons">
+            <LoadingButton
+              type="submit"
+              loading={isLoading}
+              disabled={isLoading}
+              variant="outlined"
+            >
+              {modalType}
+            </LoadingButton>
+            <LoadingButton
+              variant="contained"
+              type="button"
+              onClick={handleGoogleButtonClick}
+            >
+              Sign in with Google
+            </LoadingButton>
+          </div>
         </Form>
       )}
     </Formik>
